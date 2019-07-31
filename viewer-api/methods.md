@@ -117,58 +117,58 @@ Changes visibility of all object excepts the ones specified.
 viewerApi.setVisibilityExclusive(["hat_1", "hat_2"], false, "mesh");
 ```
 
-### getPosition()  @TODO
+### getPosition(name: string)
 Find the actual position of mesh on the scene.
 - Input: String matching the name of the mesh.
-- Returns: 
+- Returns: Promise<[number, number, number]>
 
 ```javascript
-
+viewerApi.getPosition("Ball");
 ```
 
-### getRotation() @TODO
-...
+### getRotation(name: string)
+Find the actual orientation of mesh on the scene.
 - Input: String matching the name of the mesh.
-- Returns: 
+- Returns: Promise<[number, number, number, string]>
 
 ```javascript
-
+viewerApi.getRotation("Ball");
 ```
 
-### getScale() @TODO
-...
+### getScale(name: string)
+Find the actual scale of mesh on the scene.
 - Input: String matching the name of the mesh.
-- Returns: 
+- Returns: Promise<[number, number, number]>
 
 ```javascript
-
+viewerApi.getScale("Ball");
 ```
 
-### setPosition() @TODO
-...
-- Input: String matching the name of the mesh
-- Returns: 
+### setPosition(name: string, position: [number, number, number])
+Moves specified object for the defined numbers along the x, y, z axis.
+- Input: String matching the name of the mesh. Position array matching the x,y and z coordinates
+- Returns: Promise<boolean>
 
 ```javascript
-
+viewerApi.setPosition("Ball", [0.1, 0.1, 0.0]);
 ```
 
-### setRotation() @TODO
-...
-- Input: None
-- Returns: 
+### setRotation(name: string, rotation: [number, number, number], order: string)
+Rotates specified object for the defined angles on the x, y, z axis following the defined order of rotation execution.
+- Input: String matching the name of the mesh. Rotation array matching the x,y and z coordinates (using degree representation of angles). Order in which rotation is executed, default is XYZ (must be all capital letters).
+- Returns: Promise<boolean>
 
 ```javascript
-
+viewerApi.setRotation("Ball", [30, 0, 0]);
 ```
 
-### setScale() @TODO
-...
-- Input: None
-- Returns: 
+### setScale(name: string, scale: [number, number, number])
+Scales specified object along the x, y, z axis.
+- Input: String matching the name of the mesh. Scale array matching the x,y and z coordinates. 
+- Returns: Promise<boolean>
 
 ```javascript
-
+viewerApi.setScale("Ball", [2, 2, 2]);
 ```
 
 
