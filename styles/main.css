@@ -12,3 +12,7 @@ html, body {
   text-align: left; }
   #intro p {
     margin-top: 0; }
+
+.sidebar > h1 {
+  text-align: left;
+  margin: 0 0 0 15px; }
