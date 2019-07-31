@@ -1,0 +1,27 @@
+{
+  "name": "vctr-developers",
+  "version": "1.0.0",
+  "description": "Vectary developer resources",
+  "homepage": "https://vectary.github.io",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm run build-css && npm run serve",
+    "lint": "eslint scripts/**/*",
+    "build-css": "node-sass --include-path scss styles/main.scss styles/main.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "serve": "http-server . -c-1 -p 2220"
+  },
+  "devDependencies": {
+    "eslint": "^6.0.1",
+    "http-server": "^0.11.1",
+    "node-sass": "^4.11.0",
+    "sass": "^1.20.1",
+    "nodemon": "~1.19.1"
+  },
+  "dependencies": {},
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vectary/vectary.github.io.git"
+  }
+}
