@@ -9,3 +9,4 @@
 
  - [Parameters](parameters.md)
  - [Methods](methods.md)
+ - [Helpers](helpers.md)
