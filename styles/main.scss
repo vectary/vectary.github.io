@@ -3,20 +3,74 @@ html, body {
   padding:0;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap');
 
-
-#intro {
-  p {
-    margin-top:0;
-  }
-
+.intro {
   margin:0 auto;
   max-width:900px;
-  font-family: sans-serif;  
-  font-size: 1.25rem;
-  line-height: 1.65;
-  color: #4f4f4f;
-  text-align: left;
+  width:80%; 
+  background: #232323;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  color:#9a9a9a;
+  padding: 100px 0 0 0;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+  }
+
+  a {
+    color:#9a9a9a;
+  }
+
+  .header {
+
+    img {
+      margin: 0 0 50px 0; 
+      max-width: 200px;
+    }
+
+    h1 {
+      font-size:2rem;
+      font-weight: 700;
+    }
+
+  }
+
+  .content {
+    padding: 50px 0 0 0;
+  
+    h2 {
+      font-size:1.5rem;
+      font-weight: 700;
+    }
+
+    p {
+      margin-top:0;
+    }
+
+  }
+
+  .footer {
+    margin:100px 0 0 0;    
+    ul {
+      margin:0;
+      padding:0;
+      li {
+        display: inline;
+        margin: 0 20px 0 0;
+      }
+    }     
+  }
+
+  
+
+
+
+  
+
+  
 }
 
 .sidebar > h1 {
