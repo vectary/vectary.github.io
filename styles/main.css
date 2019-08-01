@@ -1,17 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap");
 html, body {
   margin: 0;
   padding: 0; }
 
-#intro {
+.intro {
   margin: 0 auto;
   max-width: 900px;
-  font-family: sans-serif;
-  font-size: 1.25rem;
-  line-height: 1.65;
-  color: #4f4f4f;
-  text-align: left; }
-  #intro p {
-    margin-top: 0; }
+  width: 80%;
+  background: #232323;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #9a9a9a;
+  padding: 100px 0 0 0; }
+  .intro h1, .intro h2, .intro h3, .intro h4, .intro h5, .intro h6 {
+    font-weight: 700; }
+  .intro a {
+    color: #9a9a9a; }
+  .intro .header img {
+    margin: 0 0 50px 0;
+    max-width: 200px; }
+  .intro .header h1 {
+    font-size: 2rem;
+    font-weight: 700; }
+  .intro .content {
+    padding: 50px 0 0 0; }
+    .intro .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700; }
+    .intro .content p {
+      margin-top: 0; }
+  .intro .footer {
+    margin: 100px 0 0 0; }
+    .intro .footer ul {
+      margin: 0;
+      padding: 0; }
+      .intro .footer ul li {
+        display: inline;
+        margin: 0 20px 0 0; }
 
 .sidebar > h1 {
   text-align: left;
