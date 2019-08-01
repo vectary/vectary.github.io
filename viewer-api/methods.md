@@ -216,6 +216,33 @@ Enter camera view.
 viewerApi.setCamera("front_camera");
 ```
 
+### moveCamera (position: [number, number, number])
+Moves current camera view for the specified position along the x, y and z axis.
+- Input: Array of numbers matching the x,y, z coordinates.
+- Returns: Promise<boolean>
+
+```javascript
+viewerApi.moveCamera([0.15, 0.2, 0]);
+```
+
+### rotateCamera (rotation: [number, number])
+Rotates current camera view for the specified angles. The camera target is not preserved.
+- Input: Array of numbers matching the angles.
+- Returns: Promise<boolean>
+
+```javascript
+viewerApi.rotateCamera([30, 0]);
+```
+
+### zoomCamera (zoom: number)
+Zooms current camera view for the specified zoom factor.
+- Input: Number representing zoom factor.
+- Returns: Promise<boolean>
+
+```javascript
+viewerApi.zoomCamera(2);
+```
+
 ## Materials
 
 ### getMaterials()
