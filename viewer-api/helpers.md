@@ -24,7 +24,7 @@ animate(
         return Math.pow(timeFraction, 2);
     },
     () => {
-        vctrApi.setRotation("Cube", [0, 0, 90]);
+        viewerApi.setRotation("Cube", [0, 0, 90]);
     }
 );
 ```

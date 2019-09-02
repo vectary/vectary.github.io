@@ -2,12 +2,28 @@
 
 !> To be able to run the API methods, enableAPI parameter needs to be enabled `enableAPI=1`.
 
+**Using object names**
+
+ Practically all API methods rely on object names. This makes it transparent and simple to work with, but it's good to make few things clear: 
+- Object name represents the name defined in object list inside Vectary project, e.g. `Box 1` at the time time of generating the export in Vectary editor (Viewer tab). It's a good idea to organise your object list and to name them properly before generating the export for the Viewer.
+- When referring to object or objects by name, make sure you are respecting case-sensitivity and replacing spaces with underscores, e.g. `Box_1`.
+- Typically there are singular and plural API methods available, e.g. `getObjectByName` and `getObjectsByName`. The singular method will always return a single object, if there are multiple objects matching the name, only the first one will be returned. The plural method will always return an array of objects, if there are multiple objects matching the name, they will all be returned.
+- If you rename the object in Vectary Editor and regenerate the Viewer, you also need to change the object name in your code.
+
+**Async functions**
+
+For better performance and user experience, we recommend using `await` before calling API methods as you can see in examples provided for each method. More information on async JavaScript functions: https://developers.google.com/web/fundamentals/primers/async-functions
+
+**Animations**
+
+Selected methods can be used in combination with `animate()` API helper. You can add animation to camera movements, change of materials etc. For more information see [API helpers](/helpers?id=animateduration-number-timing-function-draw-function-onfinish-function).
+
 ## General
 
-### init() @TODO
+### init()
 Initialize the API.
-- Input: 
-- Returns: 
+- Input: None
+- Returns: Promise<void>
 
 ```javascript
 viewerApi.init();
@@ -16,7 +32,7 @@ viewerApi.init();
 ## Objects
 
 ### getObjects()
-Gives a list of all objects in the 3D scene. Available objects are Meshes, Cameras and Lights. Groups are ignored so the objects have no hierarchy. 
+Returns array of all objects in the 3D scene. Available objects are Meshes, Groups, Cameras and Lights.
 - Input: None
 - Returns: Promise<SceneObject[]>
 
@@ -25,11 +41,27 @@ const allSceneObjects = await viewerApi.getObjects();
 console.log("Objects", allSceneObjects); 
 ```
 
-[Example](https://codepen.io/vectary/pen/gNRbrW?editors=1011)
+### getObjectsByName()
+Returns array of objects by name.
+- Input: name (string)
+- Returns: Promise<SceneObject[]>
 
+```javascript
+const myObjects = await viewerApi.getObjectsByName("Sphere");
+console.log("Objects", myObjects); 
+```
 
+### getObjectByName()
+Returns single object by name.
+- Input: name (string)
+- Returns: Promise<SceneObject>
+
+```javascript
+const myObject = await viewerApi.getObjectByName("Guitar_Neck_1");
+console.log("Object", myObject); 
+```
 ### getMeshes()
-Gives a list of all mesh objects in the 3D scene.
+Returns array of all mesh objects in the 3D scene. 
 - Input: None
 - Returns: Promise<Mesh[]>
 
@@ -38,29 +70,9 @@ const allSceneMeshes = await viewerApi.getMeshes();
 console.log("Meshes", allSceneMeshes); 
 ```
 
-### getObjectsByName(name: string)
-Gives details of the object. If there are two objects with the same name, both will be returned. 
-- Input: String matching the name of the object. Make sure to replace spaces with underscores. @TODO
-- Returns: Promise<SceneObject[]>
-
-```javascript
-const myObjects = await viewerApi.getObjectsByName("Connector");
-console.log("Objects", myObjects); 
-```
-
-### getObjectByName(name: string)
-Gives details of the object. If there are two objects with the same name, the first will be returned. 
-- Input: String matching the name of the object. Make sure to replace spaces with underscores. @TODO
-- Returns: Promise<SceneObject>
-
-```javascript
-const myObject = await viewerApi.getObjectByName("Connector");
-console.log("Object", myObject); 
-```
-
-### getMeshesByName(name: string)
-Gives details of the mesh object. If there are two meshes with the same name, both will be returned.
-- Input: String matching the name of the mesh object.
+### getMeshesByName()
+Returns array of mesh objects by name.
+- Input: name (string)
 - Returns: Promise<Mesh[]> 
 
 ```javascript
@@ -68,9 +80,9 @@ const myMeshes = await viewerApi.getMeshesByName("Sphere_1");
 console.log("Meshes", myMeshes);
 ```
 
-### getMeshByName(name: string)
-Gives details of the mesh object. If there are two meshes with the same name, the first will be returned.
-- Input: String matching the name of the mesh object.
+### getMeshByName()
+Returns single mesh object by name.
+- Input: name (string)
 - Returns: Promise<Mesh[]> 
 
 ```javascript
@@ -79,8 +91,7 @@ console.log("Mesh", myMesh);
 ```
 
 ### getHitObjects()
-Gives list of objects mouse is hovering over
-
+Returns array of objects that mouse is hovering over.
 - Input: None
 - Returns: Promise<SceneObject[]>
  
@@ -89,96 +100,89 @@ const hitObjects = await viewerApi.getHitObjects();
 console.log("Objects", hitObjects);
 ```
 
-### getVisibility (name: string)
-Checks initial / current? visibility of the object.
-- Input: String matching the name of the object.
+### getVisibility()
+Checks current visibility of the object by name. 
+- Input: name (string)
 - Returns: Promise<boolean>
 
 ```javascript
-viewerApi.getVisibility("hat_1");
+const isVisible = await viewerApi.getVisibility("Hat_1");
+console.log("Is Hat 1 visible?", isVisible);
 ```
 
-### setVisibility (name: string, visible: boolean)
-Changes visibility of the object.
-- Input: String matching the name of the object. Visibility state.
+### setVisibility()
+Changes visibility of the object by name. 
+- Input: name (string), visible (boolean), isExclusive (boolean)
 - Returns: Promise<boolean>
 
 ```javascript
-viewerApi.setVisibility("hat_1", false);
-viewerApi.setVisibility("hat_2", true);
+// Set Hat 1 invisible
+await viewerApi.setVisibility("Hat_1", false, false);
+// Set Hat 2 visible and all other meshes invisible
+await viewerApi.setVisibility("Hat_2", true, true);
 ```
 
-### setVisibilityExclusive(names: [string], visible: boolean, type: SceneObjectType)
-Changes visibility of all object excepts the ones specified.
-- Input: String array matching the names of the objects. Visibility state. Type of the scene object @Boris (here we need to add all possible scene object types)
-- Returns: Promise<boolean>
-
-```javascript
-viewerApi.setVisibilityExclusive(["hat_1", "hat_2"], false, "mesh");
-```
-
-### getPosition(name: string)
-Find the actual position of mesh on the scene.
-- Input: String matching the name of the mesh.
+### getPosition()
+Get the actual position (x,y,z coordinates) of the mesh by name.
+- Input: name (string)
 - Returns: Promise<[number, number, number]>
 
 ```javascript
-viewerApi.getPosition("Ball");
+const ballPosition = await viewerApi.getPosition("Ball");
+console.log("Ball position", ballPosition);
 ```
 
-### getRotation(name: string)
-Find the actual orientation of mesh on the scene.
-- Input: String matching the name of the mesh.
+### getRotation()
+Get the actual orientation of the mesh by name.
+- Input: name (string)
 - Returns: Promise<[number, number, number, string]>
 
 ```javascript
-viewerApi.getRotation("Ball");
+const ballRotation = await viewerApi.getRotation("Ball");
+console.log("Ball rotation", ballRotation);
 ```
 
-### getScale(name: string)
-Find the actual scale of mesh on the scene.
-- Input: String matching the name of the mesh.
+### getScale()
+Get the actual dimmensions of the mesh by name.
+- Input: name (string)
 - Returns: Promise<[number, number, number]>
 
 ```javascript
-viewerApi.getScale("Ball");
+const ballSize = await viewerApi.getScale("Ball");
+console.log("Ball size", ballSize);
 ```
 
-### setPosition(name: string, position: [number, number, number])
-Moves specified object for the defined numbers along the x, y, z axis.
-- Input: String matching the name of the mesh. Position array matching the x,y and z coordinates
+### setPosition()
+Moves the object specified by name, by defined values along the x, y, z axis. Position is changed relatively to its original position.
+- Input: name (string), position: (array - [number, number, number]) 
 - Returns: Promise<boolean>
 
 ```javascript
-viewerApi.setPosition("Ball", [0.1, 0.1, 0.0]);
+await viewerApi.setPosition("Ball", [0.1, 0.1, 0.0]);
 ```
 
-### setRotation(name: string, rotation: [number, number, number], order: string)
-Rotates specified object for the defined angles on the x, y, z axis following the defined order of rotation execution.
-- Input: String matching the name of the mesh. Rotation array matching the x,y and z coordinates (using degree representation of angles). Order in which rotation is executed, default is XYZ (must be all capital letters).
+### setRotation()
+Rotates the object specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters).
+- Input: name (string), rotation (array - [number, number, number]), order (string)
 - Returns: Promise<boolean>
 
 ```javascript
-viewerApi.setRotation("Ball", [30, 0, 0]);
+await viewerApi.setRotation("Ball", [30, 0, 0]);
 ```
 
-### setScale(name: string, scale: [number, number, number])
-Scales specified object along the x, y, z axis.
-- Input: String matching the name of the mesh. Scale array matching the x,y and z coordinates. 
+### setScale()
+Scales the object specified by name, by values on the x, y, z axis.
+- Input: name (string), scale (array - [number, number, number])
 - Returns: Promise<boolean>
 
 ```javascript
-viewerApi.setScale("Ball", [2, 2, 2]);
+await viewerApi.setScale("Ball", [2, 2, 2]);
 ```
-
-
-
-
 
 ## Cameras
 
 ### getCameras()
-Gives a list of all cameras available in the 3D scene.
+Returns array of all camera objects in the 3D scene. 
 - Input: None
 - Returns: Promise<Camera[]> 
 
@@ -188,8 +192,8 @@ console.log("Cameras", allSceneCameras);
 ```
 
 ### getCamerasByName (name: string)
-Gives details of the camera. If there are two cameras with the same name, both will be returned.
-- Input: String matching the name of the camera.
+Returns array of camera objects by name.
+- Input: name (string)
 - Returns: Promise<Camera[]>
 
 ```javascript
@@ -198,8 +202,8 @@ console.log("Cameras", myCameras);
 ```
 
 ### getCameraByName (name: string)
-Gives details of the camera. If there are two cameras with the same name, the first will be returned.
-- Input: String matching the name of the camera.
+Returns single camera object by name.
+- Input: name (string)
 - Returns: Promise<Camera>
 
 ```javascript
@@ -209,24 +213,40 @@ console.log("Camera", myCamera);
 
 ### setCamera (name: string)
 Enter camera view.
-- Input: String matching the name of the camera.
+- Input: name (string)
 - Returns: Promise<boolean>
 
 ```javascript
-viewerApi.setCamera("front_camera");
+await viewerApi.setCamera("front_camera");
 ```
 
-### moveCamera (position: [number, number, number])
-Moves current camera view for the specified position along the x, y and z axis.
-- Input: Array of numbers matching the x,y, z coordinates.
+### moveCamera ()
+Moves the current camera by the specified distance on XYZ axis.
+- Input: position (array - [number, number, number]) 
 - Returns: Promise<boolean>
 
 ```javascript
-viewerApi.moveCamera([0.15, 0.2, 0]);
+//Move current camera without animation
+await viewerApi.moveCamera([0.15, 0.2, 0]);
+
+//Animated move of current camera by 0.15 on X axis and 0.2 on Y axis taking 1 second. 
+//See Helpers section in API reference for more info.
+animate(
+  1000,
+  function (timeFraction) {
+    return Math.pow(timeFraction, 2);
+  },
+  function (_progress) {
+    await vctrApi.moveCamera([0.1, 0.2, 0.3]);
+  },
+  function () {
+    console.log("Done");
+  }
+);
 ```
 
 ### rotateCamera (rotation: [number, number])
-Rotates current camera view for the specified angles. The camera target is not preserved.
+Rotates the current camera by specified angles on XY axis. Note that when rotating the camera, its target is not preserved.
 - Input: Array of numbers matching the angles.
 - Returns: Promise<boolean>
 
@@ -246,7 +266,7 @@ viewerApi.zoomCamera(2);
 ## Materials
 
 ### getMaterials()
-Gives a list of all materials used in the 3D scene. 
+Returns a list of all materials used in the 3D scene. 
 - Input: None
 - Returns: Promise<Material[]>
 
@@ -256,7 +276,7 @@ console.log("Materials", allSceneMaterials);
 ```
 
 ### getMaterialsByName(name: string)
-Gives details of the material. If there are two materials with the same name, both will be returned. 
+Returns details of the material. If there are two materials with the same name, both will be returned. 
 - Input: String matching the name of the material.
 - Returns: Promise<Material[]>
 
@@ -266,7 +286,7 @@ console.log("Materials", myMaterials);
 ```
 
 ### getMaterialByName(name: string)
-Gives details of the material. If there are two materials with the same name, the first will be returned. 
+Returns details of the material. If there are two materials with the same name, the first will be returned. 
 - Input: String matching the name of the material.
 - Returns: Promise<Material>
 
@@ -370,7 +390,7 @@ const annotation = await viewerApi.addAnnotation({
 - Returns: 
 
 ```javascript
-const annotations = await vctrApi.getAnnotations();
+const annotations = await viewerApi.getAnnotations();
 console.log("Annotations", annotations); 
 ```
 

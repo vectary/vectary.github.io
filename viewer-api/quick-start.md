@@ -20,7 +20,7 @@ Viewer in web component with API enabled:
   <script type="text/javascript" src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/webcomponents-loader.js"></script>
   <script type="module" src="https://www.vectary.com/embed/viewer/v1/scripts/vctr-viewer.js"></script>
   <script type="module">
-    import { VctrApi } from "https://www.vectary.com/embed/viewer/v1/scripts/api/api.js";
+    import { viewerApi } from "https://www.vectary.com/embed/viewer/v1/scripts/api/api.js";
     //Your Viewer API magic here
   </script>
 </head>
@@ -34,7 +34,7 @@ If you prefer, you can load the Viewer via `<iframe>`:
 ```html
 <head> 
   <script type="module">
-    import { VctrApi } from "https://www.vectary.com/embed/viewer/v1/scripts/api/api.js";
+    import { viewerApi } from "https://www.vectary.com/embed/viewer/v1/scripts/api/api.js";
     //Your Viewer API magic here
   </script>
 </head>
@@ -54,8 +54,8 @@ Once the Viewer is loaded, you're all set to use the [API](methods.md) to furthe
 See the example script below. Once the API is successfully initialized, it will log the list of all objects available in the Viewer.
 
 ```javascript
-import { VctrApi } from "https://www.vectary.com/embed/viewer/v1/scripts/api/api.js";
-let vctrApi;
+import { viewerApi } from "https://www.vectary.com/embed/viewer/v1/scripts/api/api.js";
+let viewerApi;
 
 async function run() {    
 
@@ -66,16 +66,16 @@ async function run() {
     async function onReady() {
         console.log("API ready");
         try {
-            console.log(await vctrApi.getObjects());          
+            console.log(await viewerApi.getObjects());          
         } catch (e) {
             errHandler(e);
         }
     }
 
-    vctrApi = new VctrApi("ad1d5aa5-1946-41a7-a2c9-fe502596146f", errHandler);
+    viewerApi = new viewerApi("ad1d5aa5-1946-41a7-a2c9-fe502596146f", errHandler);
 
     try {
-        await vctrApi.init();        
+        await viewerApi.init();        
         onReady();
     } catch (e) {
         errHandler(e);
