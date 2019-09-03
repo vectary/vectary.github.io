@@ -1,48 +1,51 @@
 ## Fellow developers &#128406;
 
-> Welcome to the Vectary Viewer API. A powerful yet simple to use set of parameters and Javascript methods to create interactive 3D applications on top of your Vectary projects.
+> Welcome to the Vectary Viewer API. A powerful toolset that lets you create amazing interactive 3D applications on top of your Vectary projects.
 
 ## Vectary Viewer
 
 ?> Vectary is the easiest online 3D design & 3D modeling software on the web. For more information visit [Vectary homepage](https://www.vectary.com). To learn the basics of 3D modelling in Vectary, see the [Vectary Documentation](https://www.vectary.com/docs/).
 
-As the only tool out there, **Vectary** and **Vectary Viewer** will give you full control of editing and presenting. 
+As the only service out there, **Vectary** along with **Vectary Viewer** will cover your needs both in terms of creation and online presentation of your 3D work. 
 
-In it's simplest form the Embed generated in Vectary, can be used as an iframe.
+In it's simplest form, the Viewer generated in Vectary editor, can be used as an iframe.
 
 ```html
-<iframe id="e1ab67a8-689f-4fa0-a5e6-8fd7f6d57818" src="https://www.vectary.com/embed/viewer/v1/viewer.html?model=e1ab67a8-689f-4fa0-a5e6-8fd7f6d57818&env=default&envRotation=0&autoplay=1&turntable=0&showPreloader=1" frameborder="0" width="100%" height="480"></iframe>
+<iframe id="6d43b6a5-fc5a-4efe-92b5-9fa7b4aca450" src="https://www.vectary.com/embed/viewer/v1/viewer.html?model=6d43b6a5-fc5a-4efe-92b5-9fa7b4aca450&env=default&envRotation=0&autoplay=1&turntable=0&showPreloader=1" frameborder="0" width="100%" height="480"></iframe>
 ```
 The line of HTML above will result in interactive 3D model loaded directly into your website. Just try rotating, zooming or panning the scene.
 
-<iframe id="e1ab67a8-689f-4fa0-a5e6-8fd7f6d57818" src="https://www.vectary.com/embed/viewer/v1/viewer.html?model=e1ab67a8-689f-4fa0-a5e6-8fd7f6d57818&env=default&envRotation=0&autoplay=1&turntable=0&showPreloader=1" frameborder="0" width="100%" height="480"></iframe>
+<iframe id="6d43b6a5-fc5a-4efe-92b5-9fa7b4aca450" src="https://www.vectary.com/embed/viewer/v1/viewer.html?model=6d43b6a5-fc5a-4efe-92b5-9fa7b4aca450&env=default&envRotation=0&autoplay=1&turntable=0&showPreloader=1" frameborder="0" width="100%" height="480"></iframe>
 
 ## Vectary Viewer API
 
-Vectary Viewer API lets you build immersive interactive apps on top of your Vectary projects. The possibilities are limited by your immagination. 
+Vectary Viewer API lets you build immersive interactive apps on top of your Vectary projects.
 
 
-?> Feel free to reach out to other users and our support team on [Spectrum](https://spectrum.chat/vectary)
+?> Feel free to reach out to our support team and other developers on [Spectrum](https://spectrum.chat/vectary). Let us know, what you're building, we are happy to help.
 
 ## Examples
 
-@TODO To give you some examples and to inspire you, we’ve put together a list of interesting projects nuilt on top of Vectary Viewer API.
+To give you some examples and to inspire you, we’ve put together a list of interesting projects nuilt on top of Vectary Viewer API.
 
-- Guitar configurator - [Source](#)
-- Random visibility (roll the dice) - [Source](#)
-- Cameras on page scroll - [Source](#)
-- Map / Infographics - [Source](#)
+- Interactive festival map - [Demo](https://vectary-grape19.now.sh), [Source](https://github.com/vectary/grape-festival-map)
+- Product configurator - [Demo](https://pocsports-demo.vectary.now.sh/), [Source](https://github.com/vectary/pocsports-demo)
+- Video texture - [Demo](https://lyft-demo.vectary.now.sh/), [Source](https://github.com/vectary/lyft-demo)
+- Guitar configurator IN PROGRESS - [Source](https://github.com/vectary/dowina-guitar-configurator)
 
 ## Version
 
 To set the version change the “v1” in iframe or script src properties.
 
 - Viewer:
- - v1: Version 1.0 - stable
+ - v1: Version 1.0 - Stable
 - API:
- - v1: Version 1.0 RC - recommended for beta testers
+ - v1: Version 1.0 - Beta
 
 ## Changelog
+
+- Sept 6, 2019
+ - API v1: 1.0 Beta - This version is stable, no breaking changes will be implemented in v1. Some API methods still need improving.
 
 - July 1, 2019
  - API v1: 1.0 RC - Releasing the first version of the Viewer API. Things are still under development and your projects might break in the future.

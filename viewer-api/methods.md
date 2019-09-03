@@ -43,7 +43,7 @@ console.log("Objects", allSceneObjects);
 
 ### getObjectsByName()
 Returns array of objects by name.
-- Input: name (string)
+- Input: Object name (string)
 - Returns: Promise<SceneObject[]>
 
 ```javascript
@@ -53,7 +53,7 @@ console.log("Objects", myObjects);
 
 ### getObjectByName()
 Returns single object by name.
-- Input: name (string)
+- Input: Object name (string)
 - Returns: Promise<SceneObject>
 
 ```javascript
@@ -72,7 +72,7 @@ console.log("Meshes", allSceneMeshes);
 
 ### getMeshesByName()
 Returns array of mesh objects by name.
-- Input: name (string)
+- Input: Mesh name (string)
 - Returns: Promise<Mesh[]> 
 
 ```javascript
@@ -82,7 +82,7 @@ console.log("Meshes", myMeshes);
 
 ### getMeshByName()
 Returns single mesh object by name.
-- Input: name (string)
+- Input: Mesh name (string)
 - Returns: Promise<Mesh[]> 
 
 ```javascript
@@ -102,7 +102,7 @@ console.log("Objects", hitObjects);
 
 ### getVisibility()
 Checks current visibility of the object by name. 
-- Input: name (string)
+- Input: Object name (string)
 - Returns: Promise<boolean>
 
 ```javascript
@@ -112,7 +112,7 @@ console.log("Is Hat 1 visible?", isVisible);
 
 ### setVisibility()
 Changes visibility of the object by name. 
-- Input: name (string), visible (boolean), isExclusive (boolean)
+- Input: Object name (string), Visibility (boolean), Exclusivity (boolean)
 - Returns: Promise<boolean>
 
 ```javascript
@@ -124,7 +124,7 @@ await viewerApi.setVisibility("Hat_2", true, true);
 
 ### getPosition()
 Get the actual position (x,y,z coordinates) of the mesh by name.
-- Input: name (string)
+- Input: Mesh name (string)
 - Returns: Promise<[number, number, number]>
 
 ```javascript
@@ -134,7 +134,7 @@ console.log("Ball position", ballPosition);
 
 ### getRotation()
 Get the actual orientation of the mesh by name.
-- Input: name (string)
+- Input: Mesh name (string)
 - Returns: Promise<[number, number, number, string]>
 
 ```javascript
@@ -144,7 +144,7 @@ console.log("Ball rotation", ballRotation);
 
 ### getScale()
 Get the actual dimmensions of the mesh by name.
-- Input: name (string)
+- Input: Mesh name (string)
 - Returns: Promise<[number, number, number]>
 
 ```javascript
@@ -154,7 +154,7 @@ console.log("Ball size", ballSize);
 
 ### setPosition()
 Moves the object specified by name, by defined values along the x, y, z axis. Position is changed relatively to its original position.
-- Input: name (string), position: (array - [number, number, number]) 
+- Input: Object name (string), Position (array: [number, number, number]) 
 - Returns: Promise<boolean>
 
 ```javascript
@@ -163,7 +163,7 @@ await viewerApi.setPosition("Ball", [0.1, 0.1, 0.0]);
 
 ### setRotation()
 Rotates the object specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters).
-- Input: name (string), rotation (array - [number, number, number]), order (string)
+- Input: Object name (string), Rotation (array: [number, number, number]), Order (string)
 - Returns: Promise<boolean>
 
 ```javascript
@@ -172,7 +172,7 @@ await viewerApi.setRotation("Ball", [30, 0, 0]);
 
 ### setScale()
 Scales the object specified by name, by values on the x, y, z axis.
-- Input: name (string), scale (array - [number, number, number])
+- Input: Object name (string), Scale (array: [number, number, number])
 - Returns: Promise<boolean>
 
 ```javascript
@@ -191,9 +191,9 @@ const allSceneCameras = await viewerApi.getCameras();
 console.log("Cameras", allSceneCameras);
 ```
 
-### getCamerasByName (name: string)
+### getCamerasByName ()
 Returns array of camera objects by name.
-- Input: name (string)
+- Input: Object name (string)
 - Returns: Promise<Camera[]>
 
 ```javascript
@@ -201,9 +201,9 @@ const myCameras = await viewerApi.getCamerasByName("front_camera");
 console.log("Cameras", myCameras);
 ```
 
-### getCameraByName (name: string)
+### getCameraByName ()
 Returns single camera object by name.
-- Input: name (string)
+- Input: Object name (string)
 - Returns: Promise<Camera>
 
 ```javascript
@@ -211,9 +211,9 @@ const myCamera = await viewerApi.getCameraByName("front_camera");
 console.log("Camera", myCamera);
 ```
 
-### setCamera (name: string)
+### setCamera ()
 Enter camera view.
-- Input: name (string)
+- Input: Camera name (string)
 - Returns: Promise<boolean>
 
 ```javascript
@@ -222,7 +222,7 @@ await viewerApi.setCamera("front_camera");
 
 ### moveCamera ()
 Moves the current camera by the specified distance on XYZ axis.
-- Input: position (array - [number, number, number]) 
+- Input: Position (array: [number, number, number]) 
 - Returns: Promise<boolean>
 
 ```javascript
@@ -245,18 +245,18 @@ animate(
 );
 ```
 
-### rotateCamera (rotation: [number, number])
+### rotateCamera ()
 Rotates the current camera by specified angles on XY axis. Note that when rotating the camera, its target is not preserved.
-- Input: Array of numbers matching the angles.
+- Input: Rotation (array: [number, number]) 
 - Returns: Promise<boolean>
 
 ```javascript
 viewerApi.rotateCamera([30, 0]);
 ```
 
-### zoomCamera (zoom: number)
+### zoomCamera ()
 Zooms current camera view for the specified zoom factor.
-- Input: Number representing zoom factor.
+- Input: Zoom level (number)
 - Returns: Promise<boolean>
 
 ```javascript
@@ -275,9 +275,9 @@ const allSceneMaterials = await viewerApi.getMaterials();
 console.log("Materials", allSceneMaterials);
 ```
 
-### getMaterialsByName(name: string)
-Returns details of the material. If there are two materials with the same name, both will be returned. 
-- Input: String matching the name of the material.
+### getMaterialsByName()
+Returns array of materials by name.
+- Input: Material name (string)
 - Returns: Promise<Material[]>
 
 ```javascript
@@ -285,9 +285,9 @@ const myMaterials = await viewerApi.getMaterialsByName("maple_wood_1");
 console.log("Materials", myMaterials);
 ```
 
-### getMaterialByName(name: string)
-Returns details of the material. If there are two materials with the same name, the first will be returned. 
-- Input: String matching the name of the material.
+### getMaterialByName()
+Returns single material by name.
+- Input: Material name (string)
 - Returns: Promise<Material>
 
 ```javascript
@@ -295,14 +295,14 @@ const myMaterial = await viewerApi.getMaterialByName("maple_wood_1");
 console.log("Material", myMaterial);
 ```
 
-### createMaterial(material: {[key: string]: string}, name?: string)
-Creates new material to be used in your app. Any number of input object properties are allowed, no need to pass all. @Boris rephrase?
-- Input: Object. [Optional] Name of the material to clone from
+### createMaterial()
+Creates new material. When creating material, you can pass as mmanych material properties as needed. Otionally you can clone existing material by passing its name, this way material will be cloned and only the specified properties will be changed.
+- Input: Material properties (object), Material name (string)
 - Returns: Promise<Material>
 
 ```javascript
 const newMaterial = {
-  name: "New Material",
+  name: "my_new_material",
   color: "#42f477",
   alphaMap: "opacity_texture.png",
   aoMap: "ao_texture.jpg",
@@ -324,22 +324,36 @@ const newMaterial = {
   roughnessMap: 1.0,
   roughness: 1.0,
 }
-viewerApi.createMaterial(newMaterial);
+viewerApi.createMaterial(newMaterial, "wood_1");  
 ```
 
-### setMaterial(objectName: string, materialName: string)
-Applies material to the object.
-- Input: String matching the name of object. String matching the name of material
+### setMaterial()
+Applies material to the object by name.
+- Input: Object name (string), Material name (string)
 - Returns: Promise<boolean>
 
 ```javascript
-viewerApi.setMaterial("sphere_2", "maple_wood_1");
+viewerApi.setMaterial("sphere_2", "my_new_material");
+```
+
+### updateMaterial()
+Chamges existing material. Pass only those material properties that you wish to change.
+- Input: Material name (string), Material properties (object)
+- Returns: Promise<boolean>
+
+```javascript
+const updatedMaterial = {  
+  color: "#42f477",  
+  metalness: 0.5,
+  roughness: 1.0
+}
+viewerApi.createMaterial("wood_1", updatedMaterial);  
 ```
 
 ## Environment
 
 ### getBackground()
-Returns background image or color depending what is set as background. @Boris rephrase?
+Returns scene background. Background is either path to an image or RGB color code.
 - Input: None
 - Returns: Promise<string | [number, number, number]>
 
@@ -347,9 +361,9 @@ Returns background image or color depending what is set as background. @Boris re
 const background = viewerApi.getBackground();
 ```
 
-### setBackground(background: string | [number, number, number]) 
-Sets scene background.
-- Input: RGB color OR path to image 
+### setBackground() 
+Sets scene background. Background is either path to an image or RGB color code.
+- Input: Image path (string) or RGB color (array: [number, number, number])
 - Returns: Promise<boolean>
 
 ```javascript
@@ -361,19 +375,19 @@ viewerApi.setBackground('theaterBG.hdr');
 
 ## Annotations
 
-### enableAnnotations() @TODO
-Controls visibility of annotations.
-- Input: Boolean
+### enableAnnotations()
+Globally controls visibility of annotations.
+- Input: Visibility (boolean)
 - Returns: 
 
 ```javascript
 await viewerApi.enableAnnotations(true);
 ```
 
-### addAnnotation() @TODO
-Create new annotation assigned to mesh on the scene. Annotation is centered on the mesh.
-- Input: None
-- Returns: 
+### addAnnotation()
+Creates new annotation assigned to mesh by name. Annotation is placed to the center of object.
+- Input: annotationConf: AnnotationConf
+- Returns: Promise<AnnotationType | null>
 
 ```javascript
 const annotation = await viewerApi.addAnnotation({
@@ -385,9 +399,9 @@ const annotation = await viewerApi.addAnnotation({
 ```
 
 ### getAnnotations()
-...
+Returns array of all added annotations.
 - Input: None
-- Returns: 
+- Returns: Promise<AnnotationType[]>
 
 ```javascript
 const annotations = await viewerApi.getAnnotations();
@@ -395,39 +409,49 @@ console.log("Annotations", annotations);
 ```
 
 ### getAnnotationById()
-...
-- Input: None
-- Returns: 
+Returns single annotation by its unique id.
+- Input: Id (string)
+- Returns: Promise<AnnotationType>
 
 ```javascript
 await viewerApi.getAnnotationById(annotation.id);
 ```
 
 ### removeAnnotationById()
-...
-- Input: None
-- Returns: 
+Removes single annotation by its unique id.
+- Input: Id (string)
+- Returns: Promise<boolean>
 
 ```javascript
 await viewerApi.removeAnnotationById(annotation.id);
 ```
 
-## Highlighting
-
-### highlightMeshByName()
-...
-- Input: None
-- Returns: 
+### expandAnnotationsById()
+Controls visibility of annotation by its unique id.
+- Input: Ids (array), Expanded (boolean), Exclusivity (boolean)
+- Returns: Promise<boolean>
 
 ```javascript
-
+// Make all annotations invisible except one
+await viewerApi.expandAnnotationsById(annotation.id, true, true);
 ```
 
-### unhighlightMeshByName()
-...
-- Input: None
-- Returns: 
+## Highlighting
+
+### highlightMeshesByName()
+Highlight mesh objects by name. Highligting creates overlay with given Color (default: "#ffff00") and Intensity (default: 1).
+- Input: Mesh names (array), Color (string), Intensity (number), Exclusivity (boolean)
+- Returns: Promise<boolean>
 
 ```javascript
+await viewerApi.highlightMeshesByName(["sphere_1", "cube", "cobe_12"], "#fcba03", 0.8, false);
+```
 
+### unhighlightMeshesByName()
+Removes highlight from mesh objects.
+- Input: None
+- Returns: Promise<boolean>
+
+```javascript
+await viewerApi.unhighlightMeshesByName(["sphere_1", "cube", "cobe_12"]);
 ```
