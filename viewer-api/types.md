@@ -36,6 +36,7 @@ Properties:
 ### Material
 Properties:
 - **type:** "material";
+- **name:** string;
 
 ### MaterialConfig
 Properties:

@@ -34,7 +34,7 @@ viewerApi.init();
 ### getObjects()
 Returns array of all objects in the 3D scene. Available objects are Meshes, Groups, Cameras and Lights.
 - Input: None
-- Returns: Promise<SceneObject[]>
+- Returns: Promise<[SceneObject](/types?id=sceneobject)[]>
 
 ```javascript
 const allSceneObjects = await viewerApi.getObjects();
@@ -44,7 +44,7 @@ console.log("Objects", allSceneObjects);
 ### getObjectsByName()
 Returns array of objects by name.
 - Input: Object name (string)
-- Returns: Promise<SceneObject[]>
+- Returns: Promise<[SceneObject](/types?id=sceneobject)[]>
 
 ```javascript
 const myObjects = await viewerApi.getObjectsByName("Sphere");
@@ -54,7 +54,7 @@ console.log("Objects", myObjects);
 ### getObjectByName()
 Returns single object by name.
 - Input: Object name (string)
-- Returns: Promise<SceneObject>
+- Returns: Promise<[SceneObject](/types?id=sceneobject)>
 
 ```javascript
 const myObject = await viewerApi.getObjectByName("Guitar_Neck_1");
@@ -63,7 +63,7 @@ console.log("Object", myObject);
 ### getMeshes()
 Returns array of all mesh objects in the 3D scene. 
 - Input: None
-- Returns: Promise<Mesh[]>
+- Returns: Promise<[Mesh](/types?id=mesh)[]>
 
 ```javascript
 const allSceneMeshes = await viewerApi.getMeshes();
@@ -73,7 +73,7 @@ console.log("Meshes", allSceneMeshes);
 ### getMeshesByName()
 Returns array of mesh objects by name.
 - Input: Mesh name (string)
-- Returns: Promise<Mesh[]> 
+- Returns: Promise<[Mesh](/types?id=mesh)[]> 
 
 ```javascript
 const myMeshes = await viewerApi.getMeshesByName("Sphere_1");
@@ -83,7 +83,7 @@ console.log("Meshes", myMeshes);
 ### getMeshByName()
 Returns single mesh object by name.
 - Input: Mesh name (string)
-- Returns: Promise<Mesh[]> 
+- Returns: Promise<[Mesh](/types?id=mesh)[]> 
 
 ```javascript
 const myMesh = await viewerApi.getMeshByName("Sphere_1");
@@ -93,7 +93,7 @@ console.log("Mesh", myMesh);
 ### getHitObjects()
 Returns array of objects that mouse is hovering over.
 - Input: None
-- Returns: Promise<SceneObject[]>
+- Returns: Promise<[SceneObject](/types?id=sceneobject)[]>
  
 ```javascript
 const hitObjects = await viewerApi.getHitObjects();
@@ -211,7 +211,7 @@ await viewerApi.setScaleAbsolute("Ball", [1, 2, 2]);
 ### getCameras()
 Returns array of all camera objects in the 3D scene. 
 - Input: None
-- Returns: Promise<Camera[]> 
+- Returns: Promise<[Camera](/types?id=camera)[]> 
 
 ```javascript
 const allSceneCameras = await viewerApi.getCameras();
@@ -221,7 +221,7 @@ console.log("Cameras", allSceneCameras);
 ### getCamerasByName ()
 Returns array of camera objects by name.
 - Input: Object name (string)
-- Returns: Promise<Camera[]>
+- Returns: Promise<[Camera](/types?id=camera)[]>
 
 ```javascript
 const myCameras = await viewerApi.getCamerasByName("front_camera");
@@ -231,7 +231,7 @@ console.log("Cameras", myCameras);
 ### getCameraByName ()
 Returns single camera object by name.
 - Input: Object name (string)
-- Returns: Promise<Camera>
+- Returns: Promise<[Camera](/types?id=camera)>
 
 ```javascript
 const myCamera = await viewerApi.getCameraByName("front_camera");
@@ -297,7 +297,7 @@ viewerApi.zoomView(2);
 ### getMaterials()
 Returns a list of all materials used in the 3D scene. 
 - Input: None
-- Returns: Promise<Material[]>
+- Returns: Promise<[Material](/types?id=material)[]>
 
 ```javascript
 const allSceneMaterials = await viewerApi.getMaterials();
@@ -307,7 +307,7 @@ console.log("Materials", allSceneMaterials);
 ### getMaterialsByName()
 Returns array of materials by name.
 - Input: Material name (string)
-- Returns: Promise<Material[]>
+- Returns: Promise<[Material](/types?id=material)[]>
 
 ```javascript
 const myMaterials = await viewerApi.getMaterialsByName("maple_wood_1");
@@ -317,7 +317,7 @@ console.log("Materials", myMaterials);
 ### getMaterialByName()
 Returns single material by name.
 - Input: Material name (string)
-- Returns: Promise<Material>
+- Returns: Promise<[Material](/types?id=material)>
 
 ```javascript
 const myMaterial = await viewerApi.getMaterialByName("maple_wood_1");
@@ -326,8 +326,8 @@ console.log("Material", myMaterial);
 
 ### createMaterial()
 Creates new material. When creating material, you can pass as many material properties as needed. Otionally you can clone existing material by passing its name, this way material will be cloned and only the specified properties will be changed.
-- Input: Material properties (object), Material name (string)
-- Returns: Promise<Material>
+- Input: [MaterialConfig](/types?id=materialconfig) (object), Material name (string)
+- Returns: Promise<[Material](/types?id=material)>
 
 ```javascript
 // Standard PBR example
@@ -410,8 +410,8 @@ await viewerApi.enableAnnotations(true);
 
 ### addAnnotation()
 Creates new annotation assigned to mesh by name. Annotation is placed to the center of object.
-- Input: AnnotationConf
-- Returns: Promise<AnnotationType | null>
+- Input: [AnnotationConf](/types?id=annotationconf) (object)
+- Returns: Promise<[AnnotationType](/types?id=annotationtype) | null>
 
 ```javascript
 const annotation = await viewerApi.addAnnotation({
@@ -425,7 +425,7 @@ const annotation = await viewerApi.addAnnotation({
 ### getAnnotations()
 Returns array of all added annotations.
 - Input: None
-- Returns: Promise<AnnotationType[]>
+- Returns: Promise<[AnnotationType](/types?id=annotationtype)[]>
 
 ```javascript
 const annotations = await viewerApi.getAnnotations();
@@ -435,7 +435,7 @@ console.log("Annotations", annotations);
 ### getAnnotationById()
 Returns single annotation by its unique id.
 - Input: Id (string)
-- Returns: Promise<AnnotationType>
+- Returns: Promise<[AnnotationType](/types?id=annotationtype)>
 
 ```javascript
 const annotation = await viewerApi.addAnnotation({
