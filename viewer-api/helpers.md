@@ -14,7 +14,7 @@ To use helpers include them in your code like this:
 
 ### animate()
 Helper function for animating the api method calls and executing them within the time frame.
-- Input: Duration of animation in ms. Time function for modifying the animation, usually used for easing. Draw function or api method call. On finish function callback (executes when the animation is done).
+- Input: Duration of animation in ms (number). Time function for modifying the animation, usually used for easing (callback). Draw function or api method call (callback). On finish function callback (executes when the animation is done).
 - Returns: Nothing
 
 ```javascript
@@ -29,9 +29,9 @@ animate(
 );
 ```
 
-### lerp():
+### lerp()
 Helper function for linear interpolation of two vectors (usually used with absolute transformations).
-- Input: First vector. Second Vector. Alpha value.
+- Input: First vector ([number, number, number]). Second Vector ([number, number, number]). Alpha value (number).
 - Returns: [number, number, number]
 
 ```javascript
