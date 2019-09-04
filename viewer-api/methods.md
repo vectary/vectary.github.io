@@ -152,31 +152,58 @@ const ballSize = await viewerApi.getScale("Ball");
 console.log("Ball size", ballSize);
 ```
 
-### setPosition()
+### setPositionRelative()
 Moves the object specified by name, by defined values along the x, y, z axis. Position is changed relatively to its original position.
 - Input: Object name (string), Position (array: [number, number, number]) 
 - Returns: Promise<boolean>
 
 ```javascript
-await viewerApi.setPosition("Ball", [0.1, 0.1, 0.0]);
+await viewerApi.setPositionRelative("Ball", [0.1, 0.1, 0.0]);
 ```
 
-### setRotation()
+### setPositionAbsolute()
+Moves the object specified by name, by defined values along the x, y, z axis. Position is changed absolutely to its original position.
+- Input: Object name (string), Position (array: [number, number, number]) 
+- Returns: Promise<boolean>
+
+```javascript
+await viewerApi.setPositionAbsolute("Ball", [0.0, 1.0, 0.0]);
+```
+
+### setRotationRelative()
 Rotates the object specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters).
 - Input: Object name (string), Rotation (array: [number, number, number]), Order (string)
 - Returns: Promise<boolean>
 
 ```javascript
-await viewerApi.setRotation("Ball", [30, 0, 0]);
+await viewerApi.setRotationRelative("Ball", [0, 0, 0]);
 ```
 
-### setScale()
+### setRotationAbsolute()
+Rotates the object specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters).
+- Input: Object name (string), Rotation (array: [number, number, number]), Order (string)
+- Returns: Promise<boolean>
+
+```javascript
+await viewerApi.setRotationAbsolute("Ball", [0, 20, 20]);
+```
+
+### setScaleRelative()
 Scales the object specified by name, by values on the x, y, z axis.
 - Input: Object name (string), Scale (array: [number, number, number])
 - Returns: Promise<boolean>
 
 ```javascript
-await viewerApi.setScale("Ball", [2, 2, 2]);
+await viewerApi.setScaleRelative("Ball", [0.2, 0.2, 0.2]);
+```
+
+### setScaleAbsolute()
+Scales the object specified by name, to values on the x, y, z axis.
+- Input: Object name (string), Scale (array: [number, number, number])
+- Returns: Promise<boolean>
+
+```javascript
+await viewerApi.setScaleAbsolute("Ball", [1, 2, 2]);
 ```
 
 ## Cameras
