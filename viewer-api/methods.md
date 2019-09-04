@@ -123,8 +123,8 @@ await viewerApi.setVisibility("Hat_2", true, true);
 ```
 
 ### getPosition()
-Get the actual position (x,y,z coordinates) of the mesh by name.
-- Input: Mesh name (string)
+Get the actual position (x,y,z coordinates) of the mesh or group by name.
+- Input: Mesh/Group name (string)
 - Returns: Promise<[number, number, number]>
 
 ```javascript
@@ -133,8 +133,8 @@ console.log("Ball position", ballPosition);
 ```
 
 ### getRotation()
-Get the actual orientation of the mesh by name.
-- Input: Mesh name (string)
+Get the actual orientation of the mesh or group by name.
+- Input: Mesh/Group name (string)
 - Returns: Promise<[number, number, number, string]>
 
 ```javascript
@@ -143,8 +143,8 @@ console.log("Ball rotation", ballRotation);
 ```
 
 ### getScale()
-Get the actual dimmensions of the mesh by name.
-- Input: Mesh name (string)
+Get the actual dimmensions of the mesh or group by name.
+- Input: Mesh/Group name (string)
 - Returns: Promise<[number, number, number]>
 
 ```javascript
@@ -153,7 +153,7 @@ console.log("Ball size", ballSize);
 ```
 
 ### setPositionRelative()
-Moves the object specified by name, by defined values along the x, y, z axis. Position is changed relatively to its original position.
+Moves the object or group specified by name, by defined values along the x, y, z axis. Position is changed relatively to its original position.
 - Input: Object name (string), Position (array: [number, number, number]) 
 - Returns: Promise<boolean>
 
@@ -162,8 +162,8 @@ await viewerApi.setPositionRelative("Ball", [0.1, 0.1, 0.0]);
 ```
 
 ### setPositionAbsolute()
-Moves the object specified by name, by defined values along the x, y, z axis. Position is changed absolutely to its original position.
-- Input: Object name (string), Position (array: [number, number, number]) 
+Moves the object or group specified by name, by defined values along the x, y, z axis. Position is changed to the specified position.
+- Input: Object/Group name (string), Position (array: [number, number, number]) 
 - Returns: Promise<boolean>
 
 ```javascript
@@ -171,8 +171,8 @@ await viewerApi.setPositionAbsolute("Ball", [0.0, 1.0, 0.0]);
 ```
 
 ### setRotationRelative()
-Rotates the object specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters).
-- Input: Object name (string), Rotation (array: [number, number, number]), Order (string)
+Rotates the object or group specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters). Rotation is changed relatively to its original rotation.
+- Input: Object/Group name (string), Rotation (array: [number, number, number]), _Optional:_ Order (string)
 - Returns: Promise<boolean>
 
 ```javascript
@@ -180,8 +180,8 @@ await viewerApi.setRotationRelative("Ball", [0, 0, 0]);
 ```
 
 ### setRotationAbsolute()
-Rotates the object specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters).
-- Input: Object name (string), Rotation (array: [number, number, number]), Order (string)
+Rotates the object or group specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters). Rotation is changed to the specified rotation.
+- Input: Object/Group name (string), Rotation (array: [number, number, number]), _Optional:_ Order (string)
 - Returns: Promise<boolean>
 
 ```javascript
@@ -189,8 +189,8 @@ await viewerApi.setRotationAbsolute("Ball", [0, 20, 20]);
 ```
 
 ### setScaleRelative()
-Scales the object specified by name, by values on the x, y, z axis.
-- Input: Object name (string), Scale (array: [number, number, number])
+Scales the object or group specified by name, by values on the x, y, z axis.
+- Input: Object/Group name (string), Scale (array: [number, number, number])
 - Returns: Promise<boolean>
 
 ```javascript
@@ -198,8 +198,8 @@ await viewerApi.setScaleRelative("Ball", [0.2, 0.2, 0.2]);
 ```
 
 ### setScaleAbsolute()
-Scales the object specified by name, to values on the x, y, z axis.
-- Input: Object name (string), Scale (array: [number, number, number])
+Scales the object or group specified by name, to values on the x, y, z axis.
+- Input: Object/Group name (string), Scale (array: [number, number, number])
 - Returns: Promise<boolean>
 
 ```javascript
@@ -238,23 +238,25 @@ const myCamera = await viewerApi.getCameraByName("front_camera");
 console.log("Camera", myCamera);
 ```
 
-### setCamera ()
-Enter camera view.
+## Viewport
+
+### switchView ()
+Switch camera view.
 - Input: Camera name (string)
 - Returns: Promise<boolean>
 
 ```javascript
-await viewerApi.setCamera("front_camera");
+await viewerApi.switchView("front_camera");
 ```
 
-### moveCamera ()
-Moves the current camera by the specified distance on XYZ axis.
+### moveView ()
+Moves the current view by the specified distance on XYZ axis.
 - Input: Position (array: [number, number, number]) 
 - Returns: Promise<boolean>
 
 ```javascript
 //Move current camera without animation
-await viewerApi.moveCamera([0.15, 0.2, 0]);
+await viewerApi.moveView([0.15, 0.2, 0]);
 
 //Animated move of current camera by 0.15 on X axis and 0.2 on Y axis taking 1 second. 
 //See Helpers section in API reference for more info.
@@ -264,7 +266,7 @@ animate(
     return Math.pow(timeFraction, 2);
   },
   function (_progress) {
-    await vctrApi.moveCamera([0.1, 0.2, 0.3]);
+    await vctrApi.moveView([0.1, 0.2, 0.3]);
   },
   function () {
     console.log("Done");
@@ -272,22 +274,22 @@ animate(
 );
 ```
 
-### rotateCamera ()
-Rotates the current camera by specified angles on XY axis. Note that when rotating the camera, its target is not preserved.
+### rotateView ()
+Rotates the current view by specified angles on XY axis. Note that when rotating the view, its target is not preserved.
 - Input: Rotation (array: [number, number]) 
 - Returns: Promise<boolean>
 
 ```javascript
-viewerApi.rotateCamera([30, 0]);
+viewerApi.rotateView([30, 0]);
 ```
 
-### zoomCamera ()
-Zooms current camera view for the specified zoom factor.
+### zoomView ()
+Zooms current view by the specified zoom factor.
 - Input: Zoom level (number)
 - Returns: Promise<boolean>
 
 ```javascript
-viewerApi.zoomCamera(2);
+viewerApi.zoomView(2);
 ```
 
 ## Materials
@@ -323,33 +325,28 @@ console.log("Material", myMaterial);
 ```
 
 ### createMaterial()
-Creates new material. When creating material, you can pass as mmanych material properties as needed. Otionally you can clone existing material by passing its name, this way material will be cloned and only the specified properties will be changed.
+Creates new material. When creating material, you can pass as many material properties as needed. Otionally you can clone existing material by passing its name, this way material will be cloned and only the specified properties will be changed.
 - Input: Material properties (object), Material name (string)
 - Returns: Promise<Material>
 
 ```javascript
+// Standard PBR example
 const newMaterial = {
-  name: "my_new_material",
-  color: "#42f477",
-  alphaMap: "opacity_texture.png",
-  aoMap: "ao_texture.jpg",
-  aoMapIntensity: 1.0,
-  bumpMap: "bump_texture.png",
-  bumpScale: 0.2,
-  displacementMap: "displacement_texture.png",
-  displacementScale: 1.0,
-  displacementBias: 0.0,
-  emissive: "#22f517",
-  emissiveMap: "emissive_texture.jpg",
-  emissiveIntensity: 0.1,
-  lightMap: "lm_texture.jpg",
-  lightMapIntensity: 1.0,
-  map: 'diffuse_texture.jpg'
-  metalness: 0.0,
-  metalnessMap: "mtl_texture.png",
-  normalMap: "normal_texture.jpg"
-  roughnessMap: 1.0,
-  roughness: 1.0,
+  name: "my_new_material";
+  color?: "#42f477";
+  opacity?: 1.0;
+  roughness?: 1.0;
+  metalness?: 0.0;
+  map?: "diffuse_texture.jpg";
+  alphaMap?: "opacity_texture.png";
+  aoMap?: "ao_texture.jpg";
+  aoMapIntensity?: 1.0;
+  emissive?: "#22f517";
+  emissiveMap?: "emissive_texture.jpg";
+  emissiveIntensity?: 0.1;
+  metalnessMap?: "mtl_texture.png";
+  roughnessMap?: "roughness_texture.png";
+  normalMap?: "normal_texture.png";
 }
 viewerApi.createMaterial(newMaterial, "wood_1");  
 ```
@@ -405,7 +402,7 @@ viewerApi.setBackground('theaterBG.hdr');
 ### enableAnnotations()
 Globally controls visibility of annotations.
 - Input: Visibility (boolean)
-- Returns: 
+- Returns: Promise<boolean>
 
 ```javascript
 await viewerApi.enableAnnotations(true);
@@ -413,7 +410,7 @@ await viewerApi.enableAnnotations(true);
 
 ### addAnnotation()
 Creates new annotation assigned to mesh by name. Annotation is placed to the center of object.
-- Input: annotationConf: AnnotationConf
+- Input: AnnotationConf
 - Returns: Promise<AnnotationType | null>
 
 ```javascript
@@ -441,6 +438,13 @@ Returns single annotation by its unique id.
 - Returns: Promise<AnnotationType>
 
 ```javascript
+const annotation = await viewerApi.addAnnotation({
+    label: "1",
+    name: "Handle",
+    text: "This is obviously very handy",
+    objectName: "Handle_-_baked"
+});
+
 await viewerApi.getAnnotationById(annotation.id);
 ```
 
@@ -450,23 +454,37 @@ Removes single annotation by its unique id.
 - Returns: Promise<boolean>
 
 ```javascript
+const annotation = await viewerApi.addAnnotation({
+    label: "1",
+    name: "Handle",
+    text: "This is obviously very handy",
+    objectName: "Handle_-_baked"
+});
+
 await viewerApi.removeAnnotationById(annotation.id);
 ```
 
 ### expandAnnotationsById()
-Controls visibility of annotation by its unique id.
+Expands annotation's body by its unique id.
 - Input: Ids (array), Expanded (boolean), Exclusivity (boolean)
 - Returns: Promise<boolean>
 
 ```javascript
-// Make all annotations invisible except one
+// Collapse all annotations except specified
+const annotation = await viewerApi.addAnnotation({
+    label: "1",
+    name: "Handle",
+    text: "This is obviously very handy",
+    objectName: "Handle_-_baked"
+});
+
 await viewerApi.expandAnnotationsById(annotation.id, true, true);
 ```
 
 ## Highlighting
 
 ### highlightMeshesByName()
-Highlight mesh objects by name. Highligting creates overlay with given Color (default: "#ffff00") and Intensity (default: 1).
+Highlight mesh objects by name. Highligting creates material overlay with specified color (default: "#ffff00") and intensity (default: 1).
 - Input: Mesh names (array), Color (string), Intensity (number), Exclusivity (boolean)
 - Returns: Promise<boolean>
 
@@ -475,7 +493,7 @@ await viewerApi.highlightMeshesByName(["sphere_1", "cube", "cobe_12"], "#fcba03"
 ```
 
 ### unhighlightMeshesByName()
-Removes highlight from mesh objects.
+Removes highlight from meshes.
 - Input: None
 - Returns: Promise<boolean>
 
