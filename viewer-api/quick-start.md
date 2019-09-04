@@ -17,15 +17,19 @@ Viewer in web component with API enabled:
 
 ```html
 <head>
-  <script type="text/javascript" src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/webcomponents-loader.js"></script>
-  <script type="module" src="https://www.vectary.com/embed/viewer/v1/scripts/vctr-viewer.js"></script>
-  <script type="module">
-    import { viewerApi } from "https://www.vectary.com/viewer-api/v1/api.js";
-    //Your Viewer API magic here
-  </script>
+    <script type="text/javascript" src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/webcomponents-loader.js"></script>
+    <script type="module" src="https://www.vectary.com/viewer/v1/scripts/vctr-viewer.js"></script>
+    <script type="module">
+        import { viewerApi } from "https://www.vectary.com/viewer-api/v1/api.js";
+        //Your Viewer API magic here
+    </script>
 </head>
 <body>
-  <vctr-viewer id="ad1d5aa5-1946-41a7-a2c9-fe502596146f" model="ad1d5aa5-1946-41a7-a2c9-fe502596146f" enableApi=1”></vctr-viewer>  
+    <vctr-viewer 
+        id="92ec77bf-da3f-47d0-a0a2-f61413bd3ffa" 
+        model="92ec77bf-da3f-47d0-a0a2-f61413bd3ffa" 
+        enableApi=1”>
+    </vctr-viewer>
 </body>
 ```
 
@@ -33,17 +37,23 @@ If you prefer, you can load the Viewer via `<iframe>`:
 
 ```html
 <head> 
-  <script type="module">
-    import { viewerApi } from "https://www.vectary.com/viewer-api/v1/api.js";
-    //Your Viewer API magic here
-  </script>
+    <script type="module">
+        import { viewerApi } from "https://www.vectary.com/viewer-api/v1/api.js";
+        //Your Viewer API magic here
+    </script>
 </head>
 <body>
-  <iframe id="ad1d5aa5-1946-41a7-a2c9-fe502596146f" src="https://www.vectary.com/embed/viewer/v1/viewer.html?model=ad1d5aa5-1946-41a7-a2c9-fe502596146f&enableApi=1" frameborder="0" width="100%" height="480"></iframe>
+    <iframe 
+        id="92ec77bf-da3f-47d0-a0a2-f61413bd3ffa" 
+        src="https://www.vectary.com/viewer/v1/?model=92ec77bf-da3f-47d0-a0a2-f61413bd3ffa&enableApi=1" 
+        frameborder="0" 
+        width="100%" 
+        height="480">
+    </iframe>
 </body>
 ```
 
-?> If you do not plan to use any API methods in your project (e.g. for object visibility manipulation, camera switching etc.)  you do not need to include the `api.js` script in your head. To use the [Viewer parameters](parameters.md) (e.g. turntable, autoplay etc.) the Viewer API script is not necessary.
+?> If you do not plan to use any API methods in your project (e.g. for object visibility manipulation, camera switching etc.) you do not need to include the `api.js` script in your head or enable the API via `enableApi=1` parameter. To only use the [Viewer parameters](parameters.md) (e.g. turntable, autoplay etc.) API is not necessary.
 
 ## Initialize the Viewer API
 
@@ -72,7 +82,7 @@ async function run() {
         }
     }
 
-    viewerApi = new viewerApi("ad1d5aa5-1946-41a7-a2c9-fe502596146f", errHandler);
+    viewerApi = new viewerApi("92ec77bf-da3f-47d0-a0a2-f61413bd3ffa", errHandler);
 
     try {
         await viewerApi.init();        

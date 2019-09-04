@@ -11,11 +11,17 @@ As the only service out there, **Vectary** along with **Vectary Viewer** will co
 In it's simplest form, the Viewer generated in Vectary editor, can be used as an iframe.
 
 ```html
-<iframe id="6d43b6a5-fc5a-4efe-92b5-9fa7b4aca450" src="https://www.vectary.com/embed/viewer/v1/viewer.html?model=6d43b6a5-fc5a-4efe-92b5-9fa7b4aca450&env=default&envRotation=0&autoplay=1&turntable=0&showPreloader=1" frameborder="0" width="100%" height="480"></iframe>
+<iframe 
+    id="6d43b6a5-fc5a-4efe-92b5-9fa7b4aca450" 
+    src="https://www.vectary.com/viewer/v1/?model=92ec77bf-da3f-47d0-a0a2-f61413bd3ffa&turntable=-2" 
+    frameborder="0" 
+    width="100%" 
+    height="480">
+</iframe>
 ```
 The line of HTML above will result in interactive 3D model loaded directly into your website. Just try rotating, zooming or panning the scene.
 
-<iframe id="6d43b6a5-fc5a-4efe-92b5-9fa7b4aca450" src="https://www.vectary.com/embed/viewer/v1/viewer.html?model=6d43b6a5-fc5a-4efe-92b5-9fa7b4aca450&env=default&envRotation=0&autoplay=1&turntable=0&showPreloader=1" frameborder="0" width="100%" height="480"></iframe>
+<iframe id="6d43b6a5-fc5a-4efe-92b5-9fa7b4aca450" src="https://www.vectary.com/viewer/v1/?model=92ec77bf-da3f-47d0-a0a2-f61413bd3ffa&turntable=-2" frameborder="0" width="100%" height="480"></iframe>
 
 ## Vectary Viewer API
 

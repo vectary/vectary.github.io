@@ -2,20 +2,33 @@
 
 To control Viewer’s looks and behavior a set of initialization parameters is available. They can be set both for the iframe and web component.
 
-Example: Setting init parameters in an iframe
+Example: Setting viewer parameters using web component
 
 ```html
-<iframe src="https://www.vectary.com/embed/viewer/v1/viewer.html?model=ad1d5aa5-1946-41a7-a2c9-fe502596146f&enableApi=1&autoplay=0&turntable=0.5" frameborder="0" width="100%" height="480"></iframe>
+<vctr-viewer 
+    model="92ec77bf-da3f-47d0-a0a2-f61413bd3ffa" 
+    autoplay="0" 
+    turntable=”0.5 
+    enableApi=1”
+>
+</vctr-viewer>
 ```
 
-Example: Setting init parameters in a web component
+Example: Setting init parameters using iframe
 
 ```html
-<vctr-viewer model="ad1d5aa5-1946-41a7-a2c9-fe502596146f" autoplay="0" turntable=”0.5 enableApi=1”></vctr-viewer>
+<iframe 
+    src="https://www.vectary.com/embed/viewer/v1/?model=92ec77bf-da3f-47d0-a0a2-f61413bd3ffa&autoplay=0&turntable=0.5&enableApi=1" 
+    frameborder="0" 
+    width="100%" 
+    height="480"
+>
+</iframe>
 ```
+
 
 ## model (string)
-The only mandatory parameter for the viewer to load. It specifies the Vectary project UUID, e.g. `“ad1d5aa5-1946-41a7-a2c9-fe502596146f”`. To load the project in Viewer, it first needs to be generated in the Embed panel.
+The only mandatory parameter for the viewer to load. It specifies the Vectary project UUID, e.g. `“92ec77bf-da3f-47d0-a0a2-f61413bd3ffa”`. To load the project in Viewer, it first needs to be generated in the Embed panel.
 
 ## enableApi (num, default: 0)
 If set to 1, the viewer can be controlled via JavaScript Viewer API calls.
