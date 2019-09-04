@@ -41,6 +41,8 @@ const allSceneObjects = await viewerApi.getObjects();
 console.log("Objects", allSceneObjects); 
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/gNRbrW?editors=1011)
+
 ### getObjectsByName()
 Returns array of objects by name.
 - Input: Object name (string)
