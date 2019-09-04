@@ -4,7 +4,7 @@
 To use helpers include them in your code like this:
 ```html
   <script type="module">
-    import { animate } from "https://www.vectary.com/embed/viewer/v1/scripts/api/apiUtils.js";
+    import { animate } from "https://www.vectary.com/viewer-api/v1/apiUtils.js";
     //Your Viewer API magic here
   </script>
 ```

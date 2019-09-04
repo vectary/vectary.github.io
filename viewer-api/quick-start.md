@@ -20,7 +20,7 @@ Viewer in web component with API enabled:
   <script type="text/javascript" src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/webcomponents-loader.js"></script>
   <script type="module" src="https://www.vectary.com/embed/viewer/v1/scripts/vctr-viewer.js"></script>
   <script type="module">
-    import { viewerApi } from "https://www.vectary.com/embed/viewer/v1/scripts/api/api.js";
+    import { viewerApi } from "https://www.vectary.com/viewer-api/v1/api.js";
     //Your Viewer API magic here
   </script>
 </head>
@@ -34,7 +34,7 @@ If you prefer, you can load the Viewer via `<iframe>`:
 ```html
 <head> 
   <script type="module">
-    import { viewerApi } from "https://www.vectary.com/embed/viewer/v1/scripts/api/api.js";
+    import { viewerApi } from "https://www.vectary.com/viewer-api/v1/api.js";
     //Your Viewer API magic here
   </script>
 </head>
@@ -54,7 +54,7 @@ Once the Viewer is loaded, you're all set to use the [API](methods.md) to furthe
 See the example script below. Once the API is successfully initialized, it will log the list of all objects available in the Viewer.
 
 ```javascript
-import { viewerApi } from "https://www.vectary.com/embed/viewer/v1/scripts/api/api.js";
+import { viewerApi } from "https://www.vectary.com/viewer-api/v1/api.js";
 let viewerApi;
 
 async function run() {    
