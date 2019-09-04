@@ -37,7 +37,7 @@ Properties:
 Properties:
 - **name:** string
 - **type:** "material"
-- **visible:** "boolean"
+- **visible:** boolean
 
 ### MaterialConfig
 Properties:
