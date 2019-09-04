@@ -12,8 +12,8 @@ In it's simplest form, the Viewer generated in Vectary editor, can be used as an
 
 ```html
 <iframe 
-    id="6d43b6a5-fc5a-4efe-92b5-9fa7b4aca450" 
-    src="https://www.vectary.com/viewer/v1/?model=92ec77bf-da3f-47d0-a0a2-f61413bd3ffa&turntable=-2" 
+    id="d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c" 
+    src="https://www.vectary.com/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&turntable=-2" 
     frameborder="0" 
     width="100%" 
     height="480">
@@ -21,7 +21,7 @@ In it's simplest form, the Viewer generated in Vectary editor, can be used as an
 ```
 The line of HTML above will result in interactive 3D model loaded directly into your website. Just try rotating, zooming or panning the scene.
 
-<iframe id="6d43b6a5-fc5a-4efe-92b5-9fa7b4aca450" src="https://www.vectary.com/viewer/v1/?model=92ec77bf-da3f-47d0-a0a2-f61413bd3ffa&turntable=-2" frameborder="0" width="100%" height="480"></iframe>
+<iframe id="d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c" src="https://www.vectary.com/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&turntable=-2" frameborder="0" width="100%" height="480"></iframe>
 
 ## Vectary Viewer API
 

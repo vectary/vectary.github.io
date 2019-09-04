@@ -26,8 +26,8 @@ Viewer in web component with API enabled:
 </head>
 <body>
     <vctr-viewer 
-        id="92ec77bf-da3f-47d0-a0a2-f61413bd3ffa" 
-        model="92ec77bf-da3f-47d0-a0a2-f61413bd3ffa" 
+        id="d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c" 
+        model="d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c" 
         enableApi=1”>
     </vctr-viewer>
 </body>
@@ -44,8 +44,8 @@ If you prefer, you can load the Viewer via `<iframe>`:
 </head>
 <body>
     <iframe 
-        id="92ec77bf-da3f-47d0-a0a2-f61413bd3ffa" 
-        src="https://www.vectary.com/viewer/v1/?model=92ec77bf-da3f-47d0-a0a2-f61413bd3ffa&enableApi=1" 
+        id="d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c" 
+        src="https://www.vectary.com/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&enableApi=1" 
         frameborder="0" 
         width="100%" 
         height="480">
@@ -82,7 +82,7 @@ async function run() {
         }
     }
 
-    viewerApi = new viewerApi("92ec77bf-da3f-47d0-a0a2-f61413bd3ffa", errHandler);
+    viewerApi = new viewerApi("d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c", errHandler);
 
     try {
         await viewerApi.init();        
