@@ -327,15 +327,19 @@ const allSceneMaterials = await viewerApi.getMaterials();
 console.log("Materials", allSceneMaterials);
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/oNvpgze?editors=1011)
+
 ### getMaterialsByName()
 Returns array of materials by name.
 - Input: Material name (string)
 - Returns: Promise<[Material](/types?id=material)[]>
 
 ```javascript
-const myMaterials = await viewerApi.getMaterialsByName("maple_wood_1");
-console.log("Materials", myMaterials);
+const Material = await viewerApi.getMaterialsByName("Asteroid surface");
+console.log("Material", Material); 
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/zYOpxNK?editors=1011)
 
 ### getMaterialByName()
 Returns single material by name.
@@ -343,9 +347,11 @@ Returns single material by name.
 - Returns: Promise<[Material](/types?id=material)>
 
 ```javascript
-const myMaterial = await viewerApi.getMaterialByName("maple_wood_1");
+const myMaterial = await viewerApi.getMaterialByName("Brown rock");
 console.log("Material", myMaterial);
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/dybJPmm?editors=1011)
 
 ### createMaterial()
 Creates new material. When creating material, you can pass as many material properties as needed. Otionally you can clone existing material by passing its name, this way material will be cloned and only the specified properties will be changed.
@@ -408,6 +414,8 @@ Returns scene background. Background is either path to an image or RGB color cod
 const background = viewerApi.getBackground();
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/oNvpgyq?editors=1011)
+
 ### setBackground() 
 Sets scene background. Background is either path to an image or RGB color code.
 - Input: Image path (string) or RGB color (array: [number, number, number])
@@ -417,8 +425,11 @@ Sets scene background. Background is either path to an image or RGB color code.
 // RGB color
 viewerApi.setBackground([0, 0, 255]);
 // Image
-viewerApi.setBackground('theaterBG.hdr');
+viewerApi.setBackground('space.hdr');
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/bGbaNOb?editors=1011)
+
 
 ## Annotations
 
