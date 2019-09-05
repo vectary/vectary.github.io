@@ -49,9 +49,11 @@ Returns array of objects by name.
 - Returns: Promise<[SceneObject](/types?id=sceneobject)[]>
 
 ```javascript
-const myObjects = await viewerApi.getObjectsByName("Sphere");
+const myObjects = await viewerApi.getObjectsByName("Ring");
 console.log("Objects", myObjects); 
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/pozdXqB?editors=1011)
 
 ### getObjectByName()
 Returns single object by name.
@@ -59,9 +61,12 @@ Returns single object by name.
 - Returns: Promise<[SceneObject](/types?id=sceneobject)>
 
 ```javascript
-const myObject = await viewerApi.getObjectByName("Guitar_Neck_1");
+const myObject = await viewerApi.getObjectByName("Satellite_Antenna");
 console.log("Object", myObject); 
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/pozdXXm?editors=1011)
+
 ### getMeshes()
 Returns array of all mesh objects in the 3D scene. 
 - Input: None
@@ -69,8 +74,10 @@ Returns array of all mesh objects in the 3D scene.
 
 ```javascript
 const allSceneMeshes = await viewerApi.getMeshes();
-console.log("Meshes", allSceneMeshes); 
+console.log("Meshes", allSceneMeshes);
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/KKPZPLQ?editors=1011)
 
 ### getMeshesByName()
 Returns array of mesh objects by name.
