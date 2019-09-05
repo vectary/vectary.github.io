@@ -149,6 +149,8 @@ const ballPosition = await viewerApi.getPosition("Ball");
 console.log("Ball position", ballPosition);
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/vYBWwxq?editors=1011)
+
 ### getRotation()
 Get the actual orientation of the mesh or group by name.
 - Input: Mesh/Group name (string)
@@ -158,6 +160,8 @@ Get the actual orientation of the mesh or group by name.
 const ballRotation = await viewerApi.getRotation("Ball");
 console.log("Ball rotation", ballRotation);
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/GRKOaYo?editors=1011)
 
 ### getScale()
 Get the actual dimmensions of the mesh or group by name.
@@ -169,6 +173,8 @@ const ballSize = await viewerApi.getScale("Ball");
 console.log("Ball size", ballSize);
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/wvwPLOx?editors=1011)
+
 ### setPositionRelative()
 Moves the object or group specified by name, by defined values along the x, y, z axis. Position is changed relatively to its original position.
 - Input: Object name (string), Position (array: [number, number, number]) 
@@ -177,6 +183,8 @@ Moves the object or group specified by name, by defined values along the x, y, z
 ```javascript
 await viewerApi.setPositionRelative("Ball", [0.1, 0.1, 0.0]);
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/gOYXVbK?editors=1011)
 
 ### setPositionAbsolute()
 Moves the object or group specified by name, by defined values along the x, y, z axis. Position is changed to the specified position.
@@ -187,6 +195,8 @@ Moves the object or group specified by name, by defined values along the x, y, z
 await viewerApi.setPositionAbsolute("Ball", [0.0, 1.0, 0.0]);
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/rNBYXOO?editors=1011)
+
 ### setRotationRelative()
 Rotates the object or group specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters). Rotation is changed relatively to its original rotation.
 - Input: Object/Group name (string), Rotation (array: [number, number, number]), _Optional:_ Order (string)
@@ -195,6 +205,8 @@ Rotates the object or group specified by name, by the defined angles on the x, y
 ```javascript
 await viewerApi.setRotationRelative("Ball", [0, 0, 0]);
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/MWgrgZV?editors=1011)
 
 ### setRotationAbsolute()
 Rotates the object or group specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters). Rotation is changed to the specified rotation.
@@ -205,6 +217,8 @@ Rotates the object or group specified by name, by the defined angles on the x, y
 await viewerApi.setRotationAbsolute("Ball", [0, 20, 20]);
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/zYOpOeM?editors=1011)
+
 ### setScaleRelative()
 Scales the object or group specified by name, by values on the x, y, z axis.
 - Input: Object/Group name (string), Scale (array: [number, number, number])
@@ -214,6 +228,8 @@ Scales the object or group specified by name, by values on the x, y, z axis.
 await viewerApi.setScaleRelative("Ball", [0.2, 0.2, 0.2]);
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/aboEoMX?editors=1011)
+
 ### setScaleAbsolute()
 Scales the object or group specified by name, to values on the x, y, z axis.
 - Input: Object/Group name (string), Scale (array: [number, number, number])
@@ -222,6 +238,8 @@ Scales the object or group specified by name, to values on the x, y, z axis.
 ```javascript
 await viewerApi.setScaleAbsolute("Ball", [1, 2, 2]);
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/NWKXKmg?editors=1011)
 
 ## Cameras
 
@@ -272,6 +290,8 @@ Switch camera view.
 await viewerApi.switchView("front_camera");
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/OJLzJMm?editors=1011)
+
 ### moveView ()
 Moves the current view by the specified distance on XYZ axis.
 - Input: Position (array: [number, number, number]) 
@@ -297,6 +317,8 @@ animate(
 );
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/VwZywje?editors=1011)
+
 ### rotateView ()
 Rotates the current view by specified angles on XY axis. Note that when rotating the view, its target is not preserved.
 - Input: Rotation (array: [number, number]) 
@@ -306,6 +328,8 @@ Rotates the current view by specified angles on XY axis. Note that when rotating
 viewerApi.rotateView([30, 0]);
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/qBWpBqE?editors=1011)
+
 ### zoomView ()
 Zooms current view by the specified zoom factor.
 - Input: Zoom level (number)
@@ -314,6 +338,8 @@ Zooms current view by the specified zoom factor.
 ```javascript
 viewerApi.zoomView(2);
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/ZEzvEBV?editors=1011)
 
 ## Materials
 
@@ -380,6 +406,8 @@ const newMaterial = {
 viewerApi.createMaterial(newMaterial, "wood_1");  
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/yLBpLqw?editors=1011)
+
 ### setMaterial()
 Applies material to the object by name.
 - Input: Object name (string), Material name (string)
@@ -388,6 +416,8 @@ Applies material to the object by name.
 ```javascript
 viewerApi.setMaterial("sphere_2", "my_new_material");
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/xxKpbwR?editors=1011)
 
 ### updateMaterial()
 Chamges existing material. Pass only those material properties that you wish to change.
@@ -402,6 +432,8 @@ const updatedMaterial = {
 }
 viewerApi.createMaterial("wood_1", updatedMaterial);  
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/ZEzvYBb?editors=1011)
 
 ## Environment
 
