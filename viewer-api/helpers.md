@@ -29,6 +29,8 @@ animate(
 );
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/pozpjmB?editors=1011)
+
 ### lerp()
 Helper function for linear interpolation of two vectors (usually used with absolute transformations).
 - Input: First vector ([number, number, number]). Second Vector ([number, number, number]). Alpha value (number).
@@ -46,3 +48,5 @@ animate(
     }
 );
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/bGbaENQ?editors=1011)
