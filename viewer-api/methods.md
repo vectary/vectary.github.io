@@ -85,9 +85,11 @@ Returns array of mesh objects by name.
 - Returns: Promise<[Mesh](/types?id=mesh)[]> 
 
 ```javascript
-const myMeshes = await viewerApi.getMeshesByName("Sphere_1");
+const myMeshes = await viewerApi.getMeshesByName("Ring");
 console.log("Meshes", myMeshes);
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/zYOpYEg?editors=1011)
 
 ### getMeshByName()
 Returns single mesh object by name.
@@ -95,9 +97,11 @@ Returns single mesh object by name.
 - Returns: Promise<[Mesh](/types?id=mesh)[]> 
 
 ```javascript
-const myMesh = await viewerApi.getMeshByName("Sphere_1");
+const myMesh = await viewerApi.getMeshByName("Satellite_Antenna");
 console.log("Mesh", myMesh);
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/JjPMjMd?editors=1011)
 
 ### getHitObjects()
 Returns array of objects that mouse is hovering over.
@@ -115,9 +119,11 @@ Checks current visibility of the object by name.
 - Returns: Promise<boolean>
 
 ```javascript
-const isVisible = await viewerApi.getVisibility("Hat_1");
-console.log("Is Hat 1 visible?", isVisible);
+const isVisible = await viewerApi.getVisibility("Satellite_Antenna");
+console.log("Is it visible?", isVisible);
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/NWKXWyz?editors=1011)
 
 ### setVisibility()
 Changes visibility of the object by name. 
@@ -125,11 +131,13 @@ Changes visibility of the object by name.
 - Returns: Promise<boolean>
 
 ```javascript
-// Set Hat 1 invisible
-await viewerApi.setVisibility("Hat_1", false, false);
-// Set Hat 2 visible and all other meshes invisible
-await viewerApi.setVisibility("Hat_2", true, true);
+// Set Rocket group invisible
+await viewerApi.setVisibility("Rocket", false, false);
+// Set Rocket group visible and all other meshes invisible
+await viewerApi.setVisibility("Rocket", true, true);
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/qBWpBYb?editors=1011)
 
 ### getPosition()
 Get the actual position (x,y,z coordinates) of the mesh or group by name.
@@ -227,15 +235,19 @@ const allSceneCameras = await viewerApi.getCameras();
 console.log("Cameras", allSceneCameras);
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/zYOpYMx?editors=1011)
+
 ### getCamerasByName ()
 Returns array of camera objects by name.
 - Input: Object name (string)
 - Returns: Promise<[Camera](/types?id=camera)[]>
 
 ```javascript
-const myCameras = await viewerApi.getCamerasByName("front_camera");
+const myCameras = await viewerApi.getCamerasByName("Camera");
 console.log("Cameras", myCameras);
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/RwbxNPQ?editors=1011)
 
 ### getCameraByName ()
 Returns single camera object by name.
@@ -243,9 +255,11 @@ Returns single camera object by name.
 - Returns: Promise<[Camera](/types?id=camera)>
 
 ```javascript
-const myCamera = await viewerApi.getCameraByName("front_camera");
+const myCamera = await viewerApi.getCameraByName("Camera");
 console.log("Camera", myCamera);
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/aboEzdm?editors=1011)
 
 ## Viewport
 
