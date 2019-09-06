@@ -36,11 +36,15 @@ If set to 1, the viewer can be controlled via JavaScript Viewer API calls.
 ## autoplay (num, default: 1)
 If set to 0, viewer will show a play button and a static scene thumbnail in the background. This is useful if you want the user to control when the viewer loads.
 
+> See the [live demo](https://codepen.io/vectary/pen/zYOpJyZ?editors=1000)
+
 ## showPreloader (num, default: 1)
 If set to 0, viewer will hide the preloader animation and loading progress.
 
 ## turntable (num, default: 0)
 If not set to 0, it will automatically rotate the scene. The value represents speed in Revolutions per minute (RPM). Negative value sets speed in counter-clockwise direction.
+
+> See the [live demo](https://codepen.io/vectary/pen/LYPeJaQ?editors=1000)
 
 ## gestureHandling (string, default: inferior) 
 Controls the scrolling behavior of Viewer. Allowed values:
@@ -56,17 +60,27 @@ If set to 1, viewer will load with all meshes set to invisible. This is useful w
 ## zoom (num, default: 1)
 If set to 0, any zooming of the scene is disabled.
 
+> See the [live demo](https://codepen.io/vectary/pen/LYPeJvQ?editors=1000)
+
 ## rotateX (num, default: 1)
 If set to 0, rotation on the X axis is disabled.
+
+> See the [live demo](https://codepen.io/vectary/pen/pozpOMy?editors=1000)
 
 ## rotateY (num, default: 1)
 If set to 0, rotation on the Y axis is disabled.
 
+> See the [live demo](https://codepen.io/vectary/pen/pozpOMy?editors=1000)
+
 ## panX (num, default: 1)
 If set to 0, panning on the X axis is disabled
 
+> See the [live demo](https://codepen.io/vectary/pen/YzKYOmO?editors=1000)
+
 ## panY (num, default: 1)
 If set to 0, panning on the Y axis is disabled
+
+> See the [live demo](https://codepen.io/vectary/pen/YzKYOmO?editors=1000)
 
 ## zoomIn (num, default: 100)
 Value represents the percentage of possible zooming in. 0 means no zoom in, 100 means full zoom in. Note: this setting will be applied to all cameras on scene. Allowed values: 0 - 100.
