@@ -71,21 +71,32 @@ If set to 0, panning on the Y axis is disabled
 ## zoomIn (num, default: 100)
 Value represents the percentage of possible zooming in. 0 means no zoom in, 100 means full zoom in. Note: this setting will be applied to all cameras on scene. Allowed values: 0 - 100.
 
+> See the [live demo](https://codepen.io/vectary/pen/VwZydNo?editors=1000)
+
 ## zoomOut (num, default: Infinity)
 Value represents the percentage of possible zooming out. 0 means no zoom out, infinity means no limit. Note: this setting will be applied to all cameras on scene. Allowed values: 0 - infinity.
 
+> See the [live demo](https://codepen.io/vectary/pen/VwZydNo?editors=1000)
 
 ## minAzimuth (num, default: -Infinity)
 Value represents the minimal angle to which the horizontal rotation is possible. Allowed values: -Infinity - 0. @Stefan please check
 
+> See the [live demo](https://codepen.io/vectary/pen/OJLzwLR?editors=1000)
+
 ## maxAzimuth (num, default: Infinity)
 Value represents the maximum angle to which the horizontal rotation is possible. Allowed values: 0 - Infinity. @Stefan please check
+
+> See the [live demo](https://codepen.io/vectary/pen/OJLzwLR?editors=1000)
 
 ## minPolar (num, default: 0) 
 Value represents the minimal angle to which the vertical rotation is possible. Allowed values: -360 - 0. @Stefan please check
 
+> See the [live demo](https://codepen.io/vectary/pen/VwZyBww?editors=1000)
+
 ## maxPolar (num, default: 360)
 Value represents the maximum angle to which the vertical rotation is possible. Allowed values: 0 - 360. @Stefan please check
+
+> See the [live demo](https://codepen.io/vectary/pen/VwZyBww?editors=1000)
 
 ## env (string, default: piazzasanmarco) 
 Environment map to be used in the scene. Environment map is not exported as part of the moel, if you want other than the default environment, it needs to be explicitly set. Preview of all available environment apps can be found in Vectary editor library, allowed parameter values are: 
