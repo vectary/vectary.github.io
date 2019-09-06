@@ -29,6 +29,8 @@ Initialize the API.
 viewerApi.init();
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/KKPZBgo?editors=1011)
+
 ## Objects
 
 ### getObjects()
@@ -112,6 +114,8 @@ Returns array of objects that mouse is hovering over.
 const hitObjects = await viewerApi.getHitObjects();
 console.log("Objects", hitObjects);
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/MWgrBKX?editors=1011)
 
 ### getVisibility()
 Checks current visibility of the object by name. 
@@ -474,6 +478,8 @@ Globally controls visibility of annotations.
 await viewerApi.enableAnnotations(true);
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/jONYKZy?editors=1011)
+
 ### addAnnotation()
 Creates new annotation assigned to mesh by name. Annotation is placed to the center of object.
 - Input: [AnnotationConf](/types?id=annotationconf) (object)
@@ -488,6 +494,8 @@ const annotation = await viewerApi.addAnnotation({
 });
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/KKPZeem?editors=1011)
+
 ### getAnnotations()
 Returns array of all added annotations.
 - Input: None
@@ -497,6 +505,8 @@ Returns array of all added annotations.
 const annotations = await viewerApi.getAnnotations();
 console.log("Annotations", annotations); 
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/OJLzEwM?editors=1011)
 
 ### getAnnotationById()
 Returns single annotation by its unique id.
@@ -514,6 +524,8 @@ const annotation = await viewerApi.addAnnotation({
 await viewerApi.getAnnotationById(annotation.id);
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/XWrVYPq?editors=1011)
+
 ### removeAnnotationById()
 Removes single annotation by its unique id.
 - Input: Id (string)
@@ -529,6 +541,8 @@ const annotation = await viewerApi.addAnnotation({
 
 await viewerApi.removeAnnotationById(annotation.id);
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/rNBpKqv?editors=1011)
 
 ### expandAnnotationsById()
 Expands annotation's body by its unique id.
@@ -547,6 +561,8 @@ const annotation = await viewerApi.addAnnotation({
 await viewerApi.expandAnnotationsById(annotation.id, true, true);
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/gOYoKZa?editors=1011)
+
 ## Highlighting
 
 ### highlightMeshesByName()
@@ -558,6 +574,8 @@ Highlight mesh objects by name. Highligting creates material overlay with specif
 await viewerApi.highlightMeshesByName(["sphere_1", "cube", "cobe_12"], "#fcba03", 0.8, false);
 ```
 
+> See the [live demo](https://codepen.io/vectary/pen/xxKpJbB?editors=1011)
+
 ### unhighlightMeshesByName()
 Removes highlight from meshes.
 - Input: None
@@ -566,3 +584,5 @@ Removes highlight from meshes.
 ```javascript
 await viewerApi.unhighlightMeshesByName(["sphere_1", "cube", "cobe_12"]);
 ```
+
+> See the [live demo](https://codepen.io/vectary/pen/WNedKQZ?editors=1011)
