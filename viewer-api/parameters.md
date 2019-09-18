@@ -8,8 +8,8 @@ Example: Setting viewer parameters using web component
 <vctr-viewer 
     model="d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c" 
     autoplay="0" 
-    turntable=”0.5 
-    enableApi=1”
+    turntable="0.5" 
+    enableApi="1"
 >
 </vctr-viewer>
 ```
@@ -28,7 +28,7 @@ Example: Setting init parameters using iframe
 
 
 ## model (string)
-The only mandatory parameter for the viewer to load. It specifies the Vectary project UUID, e.g. `“d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c”`. To load the project in Viewer, it first needs to be generated in the Embed panel.
+The only mandatory parameter for the viewer to load. It specifies the Vectary project UUID, e.g. `“d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c"`. To load the project in Viewer, it first needs to be generated in the Embed panel.
 
 ## enableApi (num, default: 0)
 If set to 1, the viewer can be controlled via JavaScript Viewer API calls.
@@ -48,8 +48,8 @@ If not set to 0, it will automatically rotate the scene. The value represents sp
 
 ## gestureHandling (string, default: inferior) 
 Controls the scrolling behavior of Viewer. Allowed values:
-- `gestureHandling=“superior”` - scene can be zoomed by scrolling the mouse over the scene.
-- `gestureHandling=“inferior”` (default) - forces user to hold the Cmd (Mac) or Ctrl (PC) for zooming with mouse scroll. This option is useful when loading the viewer in fullscreen.
+- `gestureHandling=“superior"` - scene can be zoomed by scrolling the mouse over the scene.
+- `gestureHandling=“inferior"` (default) - forces user to hold the Cmd (Mac) or Ctrl (PC) for zooming with mouse scroll. This option is useful when loading the viewer in fullscreen.
 
 ## showGesturePrompts (num, default: 1) 
 If set to 0, no prompts instructing users on how to control the scene (e.g. using Cmd+Scroll to zoom) will be shown.

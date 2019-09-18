@@ -45,7 +45,7 @@ To give you some examples and to inspire you, we’ve put together a list of int
 
 ## Version
 
-To set the version change the “v1” in iframe or script src properties.
+To set the version change the “v1" in iframe or script src properties.
 
 - Viewer:
  - v1: Version 1.0 - Stable

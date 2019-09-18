@@ -28,7 +28,7 @@ Viewer in web component with API enabled:
     <vctr-viewer 
         id="d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c" 
         model="d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c" 
-        enableApi=1”>
+        enableApi=1">
     </vctr-viewer>
 </body>
 ```
