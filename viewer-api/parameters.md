@@ -149,7 +149,10 @@ Environment map to be used in the scene. Environment map is not exported as part
 
 
 ## gamma (num, default: 2.2)
-Gamma factor value.  @Stefan more info
+Gamma factor value that is used for [gamma correcting](https://en.wikipedia.org/wiki/Gamma_correction) each frame.
+
+## baseColorGammaCorrection (num, default: 0)
+Gamma correct the baseColor of each material for the factor of 2.2
 
 ## tonemap (string, default: filmic)
 Tonemap setting @Stefan more info on what it is. Allowed values: 
@@ -160,4 +163,4 @@ Tonemap setting @Stefan more info on what it is. Allowed values:
 - `filmic`
 
 ## exposure (num, 1.0)
-Tonemap exposure value. @Stefan more info on what it is.
+Exposure value of the frame.
