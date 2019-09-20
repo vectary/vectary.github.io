@@ -155,7 +155,7 @@ Gamma factor value that is used for [gamma correcting](https://en.wikipedia.org/
 Gamma correct the baseColor of each material for the factor of 2.2
 
 ## tonemap (string, default: filmic)
-Tonemap setting @Stefan more info on what it is. Allowed values: 
+[Tonemap](https://en.wikipedia.org/wiki/Tone_mapping) setting. Allowed values: 
 - `linear`
 - `reinhard`
 - `uncharted2`
