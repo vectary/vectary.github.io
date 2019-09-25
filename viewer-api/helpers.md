@@ -39,9 +39,7 @@ Helper function for linear interpolation of two vectors (usually used with absol
 ```javascript
 animate(
     1000,
-    timeFraction => {
-        "easeInQuad"
-    },
+    "easeInQuad",
     (timeFraction) => {
         const position = lerp(capsulePos, [0.1, 0.1, 0.1], timeFraction)
         vctrApi.setPositionAbsolute("Cube", position);
