@@ -14,7 +14,7 @@ To use helpers include them in your code like this:
 
 ### animate()
 Helper function for animating the api method calls and executing them within the time frame.
-- Input: Duration of animation in ms (number). Time function for modifying the animation, usually used for easing (callback). Draw function or api method call (callback). On finish function callback (executes when the animation is done).
+- Input: Duration of animation in ms (number). Time function callback or string for modifying the animation, usually used for easing. Possible easing arguments are: "linear", "easeInQuad", "easeOutQuad", "easeInOutQuad", "easeInCubic", "easeOutCubic", "easeInOutCubic", "easeInQuart", "easeOutQuart", "easeInOutQuart" Draw function or api method call. On finish function callback (executes when the animation is done).
 - Returns: Nothing
 
 ```javascript
@@ -40,7 +40,7 @@ Helper function for linear interpolation of two vectors (usually used with absol
 animate(
     1000,
     timeFraction => {
-        return timeFraction*timeFraction;
+        "easeInQuad"
     },
     (timeFraction) => {
         const position = lerp(capsulePos, [0.1, 0.1, 0.1], timeFraction)
