@@ -55,13 +55,32 @@ If you prefer, you can load the Viewer via `<iframe>`:
 
 ?> If you do not plan to use any API methods in your project (e.g. for object visibility manipulation, camera switching etc.) you do not need to include the `api.js` script in your head or enable the API via `enableApi=1` parameter. To only use the [Viewer parameters](parameters.md) (e.g. turntable, autoplay etc.) API is not necessary.
 
-## Initialize the Viewer API
+## Simple initialization of the Viewer API
 
 Once the Viewer is loaded, you're all set to use the [API](methods.md) to further control Viewer's behavior or to add your own logic.
 
 !> To be able to use the API, the `api.js` script needs to be loaded and enableAPI parameter needs to be enabled `enableAPI=1`. See the [complete list of parameters](parameters.md) for additional controls.
 
 See the example script below. Once the API is successfully initialized, it will log the list of all objects available in the Viewer.
+
+```javascript
+import { viewerApi } from "https://www.vectary.com/viewer-api/v1/api.js";
+
+const viewerApi = new viewerApi("d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c");
+
+async function run() {    
+    await viewerApi.init();
+    console.log(await viewerApi.getObjects())
+}
+
+run();
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/BaBgaQe?editors=1011)
+
+## Initialize the Viewer API with error handling
+
+Example below shows how to initialize the Viewer API with the proper error handling.
 
 ```javascript
 import { viewerApi } from "https://www.vectary.com/viewer-api/v1/api.js";
