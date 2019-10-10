@@ -39,7 +39,14 @@ If set to 0, viewer will show a play button and a static scene thumbnail in the 
 > See the [live demo](https://codepen.io/vectary/pen/zYOpJyZ?editors=1000)
 
 ## showPreloader (num, default: 1)
-If set to 0, viewer will hide the preloader animation and loading progress.
+If set to 0, viewer will hide the preloader spinning animation.
+
+> See the [live demo](https://codepen.io/vectary/pen/ZEEbWep?editors=1000)
+
+## showPlaceholder (num, default: 1)
+If set to 0, viewer will hide the image placeholder during loading.
+
+> See the [live demo](https://codepen.io/vectary/pen/WNNQwjN?editors=1000)
 
 ## turntable (num, default: 0)
 If not set to 0, it will automatically rotate the scene. The value represents speed in Revolutions per minute (RPM). Negative value sets speed in counter-clockwise direction.
