@@ -40,7 +40,7 @@ Returns the current canvas view as PNG image with transparent background. Option
 //Return whole canvas
 const screenshot = await viewerApi.takeScreenshot();
 //Return region of the canvas (x, y, width, height)
-const screenshot = await viewerApi.takeScreenshot(100, 100, 200, 200);
+const screenshot = await viewerApi.takeScreenshot([100, 100, 200, 200]);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/PooNNOd?editors=1011)
