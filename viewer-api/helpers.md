@@ -1,14 +1,7 @@
 
 # Helpers
 
-To use helpers include them in your code like this:
-```html
-  <script type="module">
-    import { animate } from "https://www.vectary.com/viewer-api/v1/apiUtils.js";
-    //Your Viewer API magic here
-  </script>
-```
-
+To make your life easier, we have prepared API Helpers that bundle together multiple API methods, so you can get results faster. We will continuously add more Helpers based on your feedback.
 
 ## Methods
 
@@ -18,15 +11,18 @@ Helper function for animating the api method calls and executing them within the
 - Returns: Nothing
 
 ```javascript
-animate(
-    1000,
-    timeFraction => { 
-        return Math.pow(timeFraction, 2);
-    },
-    () => {
-        vctrApi.setRotation("Cube", [0, 0, 90]);
+const currentPosition = await viewerApi.getPosition("Rocks");           
+function animation() {
+  VctrApi.Utils.animate(
+    3000,
+    "easeOutQuad",
+    (timeFraction) => {
+      const position = VctrApi.Utils.lerp(currentPosition, [0, 0, 2], timeFraction);
+      viewerApi.setPositionAbsolute("Rocks", position);
     }
-);
+  );
+}
+animation();
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/pozpjmB?editors=1011)
@@ -36,15 +32,3 @@ Helper function for linear interpolation of two vectors (usually used with absol
 - Input: First vector ([number, number, number]). Second Vector ([number, number, number]). Alpha value (number).
 - Returns: [number, number, number]
 
-```javascript
-animate(
-    1000,
-    "easeInQuad",
-    (timeFraction) => {
-        const position = lerp(capsulePos, [0.1, 0.1, 0.1], timeFraction)
-        vctrApi.setPositionAbsolute("Cube", position);
-    }
-);
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/bGbaENQ?editors=1011)

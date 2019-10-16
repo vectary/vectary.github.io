@@ -26,7 +26,7 @@ Initialize the API.
 - Returns: Promise<void>
 
 ```javascript
-viewerApi.init();
+await viewerApi.init();
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/KKPZBgo?editors=1011)
@@ -316,23 +316,7 @@ Moves the current view by the specified distance on XYZ axis.
 - Returns: Promise<boolean>
 
 ```javascript
-//Move current camera without animation
-await viewerApi.moveView([0.15, 0.2, 0]);
-
-//Animated move of current camera by 0.15 on X axis and 0.2 on Y axis taking 1 second. 
-//See Helpers section in API reference for more info.
-animate(
-  1000,
-  function (timeFraction) {
-    return Math.pow(timeFraction, 2);
-  },
-  function (_progress) {
-    await vctrApi.moveView([0.1, 0.2, 0.3]);
-  },
-  function () {
-    console.log("Done");
-  }
-);
+await viewerApi.moveView([0.1, -0.1, 0.1]);              
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/VwZywje?editors=1011)
@@ -343,7 +327,7 @@ Rotates the current view by specified angles on XY axis. Note that when rotating
 - Returns: Promise<boolean>
 
 ```javascript
-viewerApi.rotateView([30, 0]);
+await viewerApi.rotateView([30, 0]);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/qBWpBqE?editors=1011)
@@ -354,7 +338,7 @@ Zooms current view by the specified zoom factor.
 - Returns: Promise<boolean>
 
 ```javascript
-viewerApi.zoomView(2);
+await viewerApi.zoomView(2);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/ZEzvEBV?editors=1011)
@@ -421,7 +405,7 @@ const newMaterial = {
   roughnessMap?: "roughness_texture.png";
   normalMap?: "normal_texture.png";
 }
-viewerApi.createMaterial(newMaterial, "wood_1");  
+await viewerApi.createMaterial(newMaterial, "wood_1");  
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/yLBpLqw?editors=1011)
@@ -432,7 +416,7 @@ Applies material to the object by name.
 - Returns: Promise<boolean>
 
 ```javascript
-viewerApi.setMaterial("sphere_2", "my_new_material");
+await viewerApi.setMaterial("sphere_2", "my_new_material");
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/xxKpbwR?editors=1011)
@@ -448,7 +432,7 @@ const updatedMaterial = {
   metalness: 0.5,
   roughness: 1.0
 }
-viewerApi.createMaterial("wood_1", updatedMaterial);  
+await viewerApi.createMaterial("wood_1", updatedMaterial);  
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/ZEzvYBb?editors=1011)
@@ -461,7 +445,7 @@ Returns scene background. Background is either path to an image or RGB color cod
 - Returns: Promise<string | [number, number, number]>
 
 ```javascript
-const background = viewerApi.getBackground();
+const background = await viewerApi.getBackground();
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/oNvpgyq?editors=1011)
@@ -473,9 +457,9 @@ Sets scene background. Background is either path to an image or RGB color code.
 
 ```javascript
 // RGB color
-viewerApi.setBackground([0, 0, 255]);
+await viewerApi.setBackground([0, 0, 255]);
 // Image
-viewerApi.setBackground('space.hdr');
+await viewerApi.setBackground('space.hdr');
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/bGbaNOb?editors=1011)

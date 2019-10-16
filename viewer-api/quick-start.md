@@ -20,7 +20,7 @@ Viewer in web component with API enabled:
     <script type="text/javascript" src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/webcomponents-loader.js"></script>
     <script type="module" src="https://www.vectary.com/viewer/v1/scripts/vctr-viewer.js"></script>
     <script type="module">
-        import { vctrApi } from "https://www.vectary.com/viewer-api/v1/api.js";
+        import { VctrApi } from "https://www.vectary.com/viewer-api/v1/api.js";
         //Your Viewer API magic here
     </script>
 </head>
@@ -38,7 +38,7 @@ If you prefer, you can load the Viewer via `<iframe>`:
 ```html
 <head> 
     <script type="module">
-        import { vctrApi } from "https://www.vectary.com/viewer-api/v1/api.js";
+        import { VctrApi } from "https://www.vectary.com/viewer-api/v1/api.js";
         //Your Viewer API magic here
     </script>
 </head>
@@ -64,9 +64,9 @@ Once the Viewer is loaded, you're all set to use the [API](methods.md) to furthe
 See the example script below. Once the API is successfully initialized, it will log the list of all objects available in the Viewer.
 
 ```javascript
-import { vctrApi } from "https://www.vectary.com/viewer-api/v1/api.js";
+import { VctrApi } from "https://www.vectary.com/viewer-api/v1/api.js";
 
-const viewerApi = new vctrApi("d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c");
+const viewerApi = new VctrApi("d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c");
 
 async function run() {    
     await viewerApi.init();
@@ -83,7 +83,7 @@ run();
 Example below shows how to initialize the Viewer API with the proper error handling.
 
 ```javascript
-import { vctrApi } from "https://www.vectary.com/viewer-api/v1/api.js";
+import { VctrApi } from "https://www.vectary.com/viewer-api/v1/api.js";
 let viewerApi;
 
 async function run() {    
@@ -101,7 +101,7 @@ async function run() {
         }
     }
 
-    viewerApi = new vctrApi("d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c", errHandler);
+    viewerApi = new VctrApi("d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c", errHandler);
 
     try {
         await viewerApi.init();        
