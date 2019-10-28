@@ -32,15 +32,17 @@ await viewerApi.init();
 > See the [live demo](https://codepen.io/vectary/pen/KKPZBgo?editors=1011)
 
 ### takeScreenshot()
-Returns the current canvas view as PNG image with transparent background. Optionally, you can specify exact coordinates and size in pixels as a scissor parameter array: x starting position, y starting position, width and height.
-- Input: _Optional:_ Scissor (array: [number, number, number, number]) 
+Returns the current canvas view as PNG image with transparent background. To get higher resolution of the screenshot, specify an optional Scale factor that will multiply the visible canvas pixel size (number). Optionally, you can specify exact coordinates and size in pixels as a scissor parameter array: x starting position, y starting position, width and height. In combination of both parameters, you need to manually apply custom scale to scissor parameter values.
+- Input: _Optional:_ Scale (number), _Optional:_ Scissor (array: [number, number, number, number]) 
 - Returns: Promise<void>
 
 ```javascript
 //Return whole canvas
 const screenshot = await viewerApi.takeScreenshot();
+//Return whole canvas and double the actual pixel size
+const screenshot = await viewerApi.takeScreenshot(2);
 //Return region of the canvas (x, y, width, height)
-const screenshot = await viewerApi.takeScreenshot([100, 100, 200, 200]);
+const screenshot = await viewerApi.takeScreenshot(1, [100, 100, 200, 200]);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/PooNNOd?editors=1011)
