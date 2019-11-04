@@ -383,6 +383,16 @@ console.log("Material", myMaterial);
 
 > See the [live demo](https://codepen.io/vectary/pen/dybJPmm?editors=1011)
 
+### getMaterialProperties()
+Returns properties of the given material.
+- Input: Material name (string)
+- Returns: Promise<[MaterialConfig](/types?id=materialconfig) >
+
+```javascript
+const myMaterialProps = await viewerApi.getMaterialProperties("Brown rock");
+console.log("Material properties: ", myMaterialProps);
+```
+
 ### createMaterial()
 Creates new material. When creating material, you can pass as many material properties as needed. Otionally you can clone existing material by passing its name, this way material will be cloned and only the specified properties will be changed.
 - Input: [MaterialConfig](/types?id=materialconfig) (object), Material name (string)
