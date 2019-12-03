@@ -48,6 +48,21 @@ If set to 0, viewer will hide the image placeholder during loading.
 
 > See the [live demo](https://codepen.io/vectary/pen/WNNQwjN?editors=1000)
 
+## arIcon (string)
+If set to absolute URL of an image file, it will replace the default AR icon in top right corner. It works best with SVG or PNG with transparent background, up to 50 x 50px in size.
+
+```html
+<iframe 
+    src="https://www.vectary.com/embed/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&arIcon=https://www.vectary.com/viewer/data/icons/noun_ar_2254890_ar_by_Sinistrad_from_the_Noun_Project.svg" 
+    frameborder="0" 
+    width="100%" 
+    height="480"
+>
+</iframe>
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/GRgReVV?editors=1000)
+
 ## turntable (num, default: 0)
 If not set to 0, it will automatically rotate the scene. The value represents speed in Revolutions per minute (RPM). Negative value sets speed in counter-clockwise direction.
 
