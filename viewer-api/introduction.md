@@ -39,8 +39,11 @@ The Viewer API lets you build web projects on top of Vectary Viewer.
 
 To give you some examples and to inspire you, we’ve put together a list of interesting projects built with Vectary Viewer API.
 
-- Interactive festival map - [Demo](https://vectary-grape19.now.sh), [Source](https://github.com/vectary/grape-festival-map)
-- Product configurator - [Demo](https://pocsports-demo.vectary.now.sh/), [Source](https://github.com/vectary/pocsports-demo)
+- Viewer API showcase - [Demos](https://www.vectary.com/viewer/demo/)
+- Texture replacing and screenshot taking (as used in Figma plugin) - [Demo](https://plugin-demo.vectary.now.sh), [Source](https://github.com/vectary/plugin-demo)
+- Interactive festival map - [Demo](https://grape-festival-map.vectary.now.sh/?lang=en), [Source](https://github.com/vectary/grape-festival-map)
+- Product configurator: Helmet - [Demo](https://pocsports-demo.vectary.now.sh/), [Source](https://github.com/vectary/pocsports-demo)
+- Product configurator: Chair - [Demo](https://stokke-demo.vectary.now.sh/), [Source](https://github.com/vectary/pocsports-demo)
 - Video texture - [Demo](https://lyft-demo.vectary.now.sh/), [Source](https://github.com/vectary/lyft-demo)
 
 ## Version
@@ -50,12 +53,20 @@ To set the version change the “v1" in iframe or script src properties.
 - Viewer:
  - v1: Version 1.0 - Stable
 - API:
- - v1: Version 1.0 - Beta
+ - v1: Version 1.0 - Stable
 
 ## Changelog
 
+- Dec 3, 2019
+ - API v1: 1.0 Stable
+ - New arIcon and showPlaceholder parameters
+ - New takeScreenshot method
+ - See all [changes](https://github.com/vectary/vectary.github.io/commits/master)
+
 - Sept 6, 2019
- - API v1: 1.0 Beta - This version is stable, no breaking changes will be implemented in v1. Some API methods still need improving.
+ - API v1: 1.0 Beta 
+ - This version is stable, no breaking changes will be implemented in v1. Some API methods still need improving.
 
 - July 1, 2019
- - API v1: 1.0 RC - Releasing the first version of the Viewer API. Things are still under development and your projects might break in the future.
+ - API v1: 1.0 RC 
+ - Releasing the first version of the Viewer API. Things are still under development and your projects might break in the future.
