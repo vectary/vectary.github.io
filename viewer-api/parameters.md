@@ -49,7 +49,7 @@ If set to 0, viewer will hide the image placeholder during loading.
 > See the [live demo](https://codepen.io/vectary/pen/WNNQwjN?editors=1000)
 
 ## arIcon (string)
-If set to absolute URL of an image file, it will replace the default AR icon in top right corner. It works best with SVG or PNG with transparent background, up to 50 x 50px in size.
+If set to absolute URL of an image file, it will replace the default AR icon in top right corner. It works best with SVG or PNG with transparent background, up to 200x50px in size.
 
 ```html
 <iframe 
