@@ -68,7 +68,7 @@ If set to absolute URL of a GLB or GLTF file, it will replace the embedded AR fi
 
 ```html
 <iframe 
-    src="https://www.vectary.com/embed/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&arAndroid=&arApple=none" 
+    src="https://www.vectary.com/embed/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&arAndroid=vectary.com/viewer/data/examples/cube.glb&arApple=none" 
     frameborder="0" 
     width="100%" 
     height="480"
@@ -84,7 +84,7 @@ If set to absolute URL of an USDZ or REALITY file, it will replace the embedded 
 
 ```html
 <iframe 
-    src="https://www.vectary.com/embed/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&arApple=&arAndroid=none" 
+    src="https://www.vectary.com/embed/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&arApple=https://www.vectary.com/viewer/data/examples/cube.reality&arAndroid=none" 
     frameborder="0" 
     width="100%" 
     height="480"
