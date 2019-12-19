@@ -63,6 +63,37 @@ If set to absolute URL of an image file, it will replace the default AR icon in 
 
 > See the [live demo](https://codepen.io/vectary/pen/GRgReVV?editors=1000)
 
+## arAndroid (string)
+If set to absolute URL of a GLB or GLTF file, it will replace the embedded AR file with the specified one. This parameter can be set as "none", which will remove the AR icon for Android platform.
+
+```html
+<iframe 
+    src="https://www.vectary.com/embed/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&arAndroid=&arApple=none" 
+    frameborder="0" 
+    width="100%" 
+    height="480"
+>
+</iframe>
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/qBErWEE?editors=1000)
+
+## arApple (string)
+If set to absolute URL of an USDZ or REALITY file, it will replace the embedded AR file with the specified one. This parameter can be set as "none", which will remove the AR icon for iOS platform.
+
+
+```html
+<iframe 
+    src="https://www.vectary.com/embed/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&arApple=&arAndroid=none" 
+    frameborder="0" 
+    width="100%" 
+    height="480"
+>
+</iframe>
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/YzPZPzg?editors=1000)
+
 ## turntable (num, default: 0)
 If not set to 0, it will automatically rotate the scene. The value represents speed in Revolutions per minute (RPM). Negative value sets speed in counter-clockwise direction.
 
