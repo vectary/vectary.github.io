@@ -47,6 +47,28 @@ const screenshot = await viewerApi.takeScreenshot(1, [100, 100, 200, 200]);
 
 > See the [live demo](https://codepen.io/vectary/pen/PooNNOd?editors=1011)
 
+### getExposure()
+Returns the current scene exposure level.
+- Input: None 
+- Returns: Promise<bollean>
+
+```javascript
+const exposure = await viewerApi.getExposure();
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/ExaObBq?editors=1011)
+
+### setExposure()
+Sets the scene overall exposure level to specified value.
+- Input: number 
+- Returns: Promise<bollean>
+
+```javascript
+viewerApi.setExposure(1.9);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/povQdMx?editors=1011)
+
 ## Objects
 
 ### getObjects()
