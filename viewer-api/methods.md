@@ -50,7 +50,7 @@ const screenshot = await viewerApi.takeScreenshot(1, [100, 100, 200, 200]);
 ### getExposure()
 Returns the current scene exposure level.
 - Input: None 
-- Returns: Promise<bollean>
+- Returns: Promise< number >
 
 ```javascript
 const exposure = await viewerApi.getExposure();
@@ -61,7 +61,7 @@ const exposure = await viewerApi.getExposure();
 ### setExposure()
 Sets the scene overall exposure level to specified value.
 - Input: number 
-- Returns: Promise<bollean>
+- Returns: Promise<boolean>
 
 ```javascript
 viewerApi.setExposure(1.9);
@@ -366,6 +366,29 @@ await viewerApi.zoomView(2);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/ZEzvEBV?editors=1011)
+
+### getFOV ()
+Returns current camera field of view angle.
+- Input: None
+- Returns: Promise< number >
+
+```javascript
+const fov = await viewerApi.getFOV();
+console.log("Field of view:", fov);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/LYEMVqB?editors=1011)
+
+### setFOV ()
+Sets current camera field of view angle. The angle can be netween 1 - 170.
+- Input: number
+- Returns: Promise<boolean>
+
+```javascript
+await viewerApi.setFOV(80);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/qBELdvy?editors=1011)
 
 ## Materials
 
