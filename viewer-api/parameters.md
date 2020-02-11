@@ -48,6 +48,11 @@ If set to 0, viewer will hide the image placeholder during loading.
 
 > See the [live demo](https://codepen.io/vectary/pen/WNNQwjN?editors=1000)
 
+## showInteractionPrompt (num, default: 1)
+If set to 0, viewer will not show the hand icon with left-right-left rotation 3 seconds after it's loaded and will disable mouse follow animation when hovering the model with the mouse.
+
+> See the [live demo](https://codepen.io/vectary/pen/dyooBMj?editors=1000)
+
 ## arIcon (string)
 If set to absolute URL of an image file, it will replace the default AR icon in top right corner. It works best with SVG or PNG with transparent background, up to 200x50px in size.
 
