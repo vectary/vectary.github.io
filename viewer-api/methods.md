@@ -4,7 +4,7 @@
 
 **Using object names**
 
- Practically all API methods rely on object names. This makes it transparent and simple to work with, but it's good to make few things clear: 
+ Practically all API methods rely on object names. This makes it transparent and simple to work with, but it's good to make few things clear:
 - Object name represents the name defined in object list inside Vectary project, e.g. `Box 1` at the time time of generating the export in Vectary editor (Viewer tab). It's a good idea to organise your object list and to name them properly before generating the export for the Viewer.
 - When referring to object or objects by name, make sure you are respecting case-sensitivity and replacing spaces with underscores, e.g. `Box_1`.
 - Typically there are singular and plural API methods available, e.g. `getObjectByName` and `getObjectsByName`. The singular method will always return a single object, if there are multiple objects matching the name, only the first one will be returned. The plural method will always return an array of objects, if there are multiple objects matching the name, they will all be returned.
@@ -31,44 +31,6 @@ await viewerApi.init();
 
 > See the [live demo](https://codepen.io/vectary/pen/KKPZBgo?editors=1011)
 
-### takeScreenshot()
-Returns the current canvas view as PNG image with transparent background. To get higher resolution of the screenshot, specify an optional Scale factor that will multiply the visible canvas pixel size (number). Optionally, you can specify exact coordinates and size in pixels as a scissor parameter array: x starting position, y starting position, width and height. In combination of both parameters, you need to manually apply custom scale to scissor parameter values.
-- Input: _Optional:_ Scale (number), _Optional:_ Scissor (array: [number, number, number, number]) 
-- Returns: Promise<void>
-
-```javascript
-//Return whole canvas
-const screenshot = await viewerApi.takeScreenshot();
-//Return whole canvas and double the actual pixel size
-const screenshot = await viewerApi.takeScreenshot(2);
-//Return region of the canvas (x, y, width, height)
-const screenshot = await viewerApi.takeScreenshot(1, [100, 100, 200, 200]);
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/PooNNOd?editors=1011)
-
-### getExposure()
-Returns the current scene exposure level.
-- Input: None 
-- Returns: Promise< number >
-
-```javascript
-const exposure = await viewerApi.getExposure();
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/ExaObBq?editors=1011)
-
-### setExposure()
-Sets the scene overall exposure level to specified value.
-- Input: number 
-- Returns: Promise<boolean>
-
-```javascript
-viewerApi.setExposure(1.9);
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/povQdMx?editors=1011)
-
 ## Objects
 
 ### getObjects()
@@ -78,7 +40,7 @@ Returns array of all objects in the 3D scene. Available objects are Meshes, Grou
 
 ```javascript
 const allSceneObjects = await viewerApi.getObjects();
-console.log("Objects", allSceneObjects); 
+console.log("Objects", allSceneObjects);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/gNRbrW?editors=1011)
@@ -90,7 +52,7 @@ Returns array of objects by name.
 
 ```javascript
 const myObjects = await viewerApi.getObjectsByName("Ring");
-console.log("Objects", myObjects); 
+console.log("Objects", myObjects);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/pozdXqB?editors=1011)
@@ -102,13 +64,13 @@ Returns single object by name.
 
 ```javascript
 const myObject = await viewerApi.getObjectByName("Satellite_Antenna");
-console.log("Object", myObject); 
+console.log("Object", myObject);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/pozdXXm?editors=1011)
 
 ### getMeshes()
-Returns array of all mesh objects in the 3D scene. 
+Returns array of all mesh objects in the 3D scene.
 - Input: None
 - Returns: Promise<[Mesh](/types?id=mesh)[]>
 
@@ -122,7 +84,7 @@ console.log("Meshes", allSceneMeshes);
 ### getMeshesByName()
 Returns array of mesh objects by name.
 - Input: Mesh name (string)
-- Returns: Promise<[Mesh](/types?id=mesh)[]> 
+- Returns: Promise<[Mesh](/types?id=mesh)[]>
 
 ```javascript
 const myMeshes = await viewerApi.getMeshesByName("Ring");
@@ -134,7 +96,7 @@ console.log("Meshes", myMeshes);
 ### getMeshByName()
 Returns single mesh object by name.
 - Input: Mesh name (string)
-- Returns: Promise<[Mesh](/types?id=mesh)[]> 
+- Returns: Promise<[Mesh](/types?id=mesh)[]>
 
 ```javascript
 const myMesh = await viewerApi.getMeshByName("Satellite_Antenna");
@@ -147,7 +109,7 @@ console.log("Mesh", myMesh);
 Returns array of objects that mouse is hovering over.
 - Input: None
 - Returns: Promise<[SceneObject](/types?id=sceneobject)[]>
- 
+
 ```javascript
 const hitObjects = await viewerApi.getHitObjects();
 console.log("Objects", hitObjects);
@@ -156,7 +118,7 @@ console.log("Objects", hitObjects);
 > See the [live demo](https://codepen.io/vectary/pen/MWgrBKX?editors=1011)
 
 ### getVisibility()
-Checks current visibility of the object by name. 
+Checks current visibility of the object by name.
 - Input: Object name (string)
 - Returns: Promise<boolean>
 
@@ -168,7 +130,7 @@ console.log("Is it visible?", isVisible);
 > See the [live demo](https://codepen.io/vectary/pen/NWKXWyz?editors=1011)
 
 ### setVisibility()
-Changes visibility of the object by name. 
+Changes visibility of the object by name.
 - Input: Object name (string), Visibility (boolean), Exclusivity (boolean)
 - Returns: Promise<boolean>
 
@@ -193,6 +155,28 @@ console.log("Ball position", ballPosition);
 
 > See the [live demo](https://codepen.io/vectary/pen/vYBWwxq?editors=1011)
 
+### setPositionRelative()
+Moves the object or group specified by name, by defined values along the x, y, z axis. Position is changed relatively to its original position.
+- Input: Object name (string), Position (array: [number, number, number])
+- Returns: Promise<boolean>
+
+```javascript
+await viewerApi.setPositionRelative("Ball", [0.1, 0.1, 0.0]);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/gOYXVbK?editors=1011)
+
+### setPositionAbsolute()
+Moves the object or group specified by name, by defined values along the x, y, z axis. Position is changed to the specified position.
+- Input: Object/Group name (string), Position (array: [number, number, number])
+- Returns: Promise<boolean>
+
+```javascript
+await viewerApi.setPositionAbsolute("Ball", [0.0, 1.0, 0.0]);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/rNBYXOO?editors=1011)
+
 ### getRotation()
 Get the actual orientation of the mesh or group by name.
 - Input: Mesh/Group name (string)
@@ -204,40 +188,6 @@ console.log("Ball rotation", ballRotation);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/GRKOaYo?editors=1011)
-
-### getScale()
-Get the actual dimmensions of the mesh or group by name.
-- Input: Mesh/Group name (string)
-- Returns: Promise<[number, number, number]>
-
-```javascript
-const ballSize = await viewerApi.getScale("Ball");
-console.log("Ball size", ballSize);
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/wvwPLOx?editors=1011)
-
-### setPositionRelative()
-Moves the object or group specified by name, by defined values along the x, y, z axis. Position is changed relatively to its original position.
-- Input: Object name (string), Position (array: [number, number, number]) 
-- Returns: Promise<boolean>
-
-```javascript
-await viewerApi.setPositionRelative("Ball", [0.1, 0.1, 0.0]);
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/gOYXVbK?editors=1011)
-
-### setPositionAbsolute()
-Moves the object or group specified by name, by defined values along the x, y, z axis. Position is changed to the specified position.
-- Input: Object/Group name (string), Position (array: [number, number, number]) 
-- Returns: Promise<boolean>
-
-```javascript
-await viewerApi.setPositionAbsolute("Ball", [0.0, 1.0, 0.0]);
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/rNBYXOO?editors=1011)
 
 ### setRotationRelative()
 Rotates the object or group specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters). Rotation is changed relatively to its original rotation.
@@ -261,6 +211,18 @@ await viewerApi.setRotationAbsolute("Ball", [0, 20, 20]);
 
 > See the [live demo](https://codepen.io/vectary/pen/zYOpOeM?editors=1011)
 
+### getScale()
+Get the actual dimmensions of the mesh or group by name.
+- Input: Mesh/Group name (string)
+- Returns: Promise<[number, number, number]>
+
+```javascript
+const ballSize = await viewerApi.getScale("Ball");
+console.log("Ball size", ballSize);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/wvwPLOx?editors=1011)
+
 ### setScaleRelative()
 Scales the object or group specified by name, by values on the x, y, z axis.
 - Input: Object/Group name (string), Scale (array: [number, number, number])
@@ -283,117 +245,10 @@ await viewerApi.setScaleAbsolute("Ball", [1, 2, 2]);
 
 > See the [live demo](https://codepen.io/vectary/pen/NWKXKmg?editors=1011)
 
-## Cameras
-
-### getCameras()
-Returns array of all camera objects in the 3D scene. 
-- Input: None
-- Returns: Promise<[Camera](/types?id=camera)[]> 
-
-```javascript
-const allSceneCameras = await viewerApi.getCameras();
-console.log("Cameras", allSceneCameras);
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/zYOpYMx?editors=1011)
-
-### getCamerasByName ()
-Returns array of camera objects by name.
-- Input: Object name (string)
-- Returns: Promise<[Camera](/types?id=camera)[]>
-
-```javascript
-const myCameras = await viewerApi.getCamerasByName("Camera");
-console.log("Cameras", myCameras);
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/RwbxNPQ?editors=1011)
-
-### getCameraByName ()
-Returns single camera object by name.
-- Input: Object name (string)
-- Returns: Promise<[Camera](/types?id=camera)>
-
-```javascript
-const myCamera = await viewerApi.getCameraByName("Camera");
-console.log("Camera", myCamera);
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/aboEzdm?editors=1011)
-
-## Viewport
-
-### switchView ()
-Switch camera view.
-- Input: Camera name (string)
-- Returns: Promise<boolean>
-
-```javascript
-await viewerApi.switchView("front_camera");
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/OJLzJMm?editors=1011)
-
-### moveView ()
-Moves the current view by the specified distance on XYZ axis.
-- Input: Position (array: [number, number, number]) 
-- Returns: Promise<boolean>
-
-```javascript
-await viewerApi.moveView([0.1, -0.1, 0.1]);              
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/VwZywje?editors=1011)
-
-### rotateView ()
-Rotates the current view by specified angles on XY axis. Note that when rotating the view, its target is not preserved.
-- Input: Rotation (array: [number, number]) 
-- Returns: Promise<boolean>
-
-```javascript
-await viewerApi.rotateView([30, 0]);
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/qBWpBqE?editors=1011)
-
-### zoomView ()
-Zooms current view by the specified zoom factor.
-- Input: Zoom level (number)
-- Returns: Promise<boolean>
-
-```javascript
-await viewerApi.zoomView(2);
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/ZEzvEBV?editors=1011)
-
-### getFOV ()
-Returns current camera field of view angle.
-- Input: None
-- Returns: Promise< number >
-
-```javascript
-const fov = await viewerApi.getFOV();
-console.log("Field of view:", fov);
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/LYEMVqB?editors=1011)
-
-### setFOV ()
-Sets current camera field of view angle. The angle can be netween 1 - 170.
-- Input: number
-- Returns: Promise<boolean>
-
-```javascript
-await viewerApi.setFOV(80);
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/qBELdvy?editors=1011)
-
 ## Materials
 
 ### getMaterials()
-Returns a list of all materials used in the 3D scene. 
+Returns a list of all materials used in the 3D scene.
 - Input: None
 - Returns: Promise<[Material](/types?id=material)[]>
 
@@ -411,7 +266,7 @@ Returns array of materials by name.
 
 ```javascript
 const Material = await viewerApi.getMaterialsByName("Asteroid surface");
-console.log("Material", Material); 
+console.log("Material", Material);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/zYOpxNK?editors=1011)
@@ -462,7 +317,7 @@ const newMaterial = {
   roughnessMap?: "roughness_texture.png";
   normalMap?: "normal_texture.png";
 }
-await viewerApi.createMaterial(newMaterial, "wood_1");  
+await viewerApi.createMaterial(newMaterial, "wood_1");
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/yLBpLqw?editors=1011)
@@ -484,12 +339,12 @@ Chamges existing material. Pass only those material properties that you wish to 
 - Returns: Promise<boolean>
 
 ```javascript
-const updatedMaterial = {  
-  color: "#42f477",  
+const updatedMaterial = {
+  color: "#42f477",
   metalness: 0.5,
   roughness: 1.0
 }
-await viewerApi.createMaterial("wood_1", updatedMaterial);  
+await viewerApi.createMaterial("wood_1", updatedMaterial);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/ZEzvYBb?editors=1011)
@@ -507,7 +362,7 @@ const background = await viewerApi.getBackground();
 
 > See the [live demo](https://codepen.io/vectary/pen/oNvpgyq?editors=1011)
 
-### setBackground() 
+### setBackground()
 Sets scene background. Background is either path to an image or RGB color code.
 - Input: Image path (string) or RGB color (array: [number, number, number])
 - Returns: Promise<boolean>
@@ -521,6 +376,152 @@ await viewerApi.setBackground('space.hdr');
 
 > See the [live demo](https://codepen.io/vectary/pen/bGbaNOb?editors=1011)
 
+### getExposure()
+Returns the current scene exposure level.
+- Input: None
+- Returns: Promise< number >
+
+```javascript
+const exposure = await viewerApi.getExposure();
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/ExaObBq?editors=1011)
+
+### setExposure()
+Sets the scene overall exposure level to specified value.
+- Input: number
+- Returns: Promise<boolean>
+
+```javascript
+viewerApi.setExposure(1.9);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/povQdMx?editors=1011)
+
+## Cameras
+
+### getCameras()
+Returns array of all camera objects in the 3D scene.
+- Input: None
+- Returns: Promise<[Camera](/types?id=camera)[]>
+
+```javascript
+const allSceneCameras = await viewerApi.getCameras();
+console.log("Cameras", allSceneCameras);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/zYOpYMx?editors=1011)
+
+### getCamerasByName ()
+Returns array of camera objects by name.
+- Input: Object name (string)
+- Returns: Promise<[Camera](/types?id=camera)[]>
+
+```javascript
+const myCameras = await viewerApi.getCamerasByName("Camera");
+console.log("Cameras", myCameras);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/RwbxNPQ?editors=1011)
+
+### getCameraByName ()
+Returns single camera object by name.
+- Input: Object name (string)
+- Returns: Promise<[Camera](/types?id=camera)>
+
+```javascript
+const myCamera = await viewerApi.getCameraByName("Camera");
+console.log("Camera", myCamera);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/aboEzdm?editors=1011)
+
+## Viewport
+
+### switchView ()
+Switch camera view.
+- Input: Camera name (string)
+- Returns: Promise<boolean>
+
+```javascript
+await viewerApi.switchView("front_camera");
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/OJLzJMm?editors=1011)
+
+### moveView ()
+Moves the current view by the specified distance on XYZ axis.
+- Input: Position (array: [number, number, number])
+- Returns: Promise<boolean>
+
+```javascript
+await viewerApi.moveView([0.1, -0.1, 0.1]);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/VwZywje?editors=1011)
+
+### rotateView ()
+Rotates the current view by specified angles on XY axis. Note that when rotating the view, its target is not preserved.
+- Input: Rotation (array: [number, number])
+- Returns: Promise<boolean>
+
+```javascript
+await viewerApi.rotateView([30, 0]);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/qBWpBqE?editors=1011)
+
+### zoomView ()
+Zooms current view by the specified zoom factor.
+- Input: Zoom level (number)
+- Returns: Promise<boolean>
+
+```javascript
+await viewerApi.zoomView(2);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/ZEzvEBV?editors=1011)
+
+### getFOV ()
+Returns current camera field of view angle.
+- Input: None
+- Returns: Promise< number >
+
+```javascript
+const fov = await viewerApi.getFOV();
+console.log("Field of view:", fov);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/LYEMVqB?editors=1011)
+
+### setFOV ()
+Sets current camera field of view angle. The angle can be netween 1 - 170.
+- Input: number
+- Returns: Promise<boolean>
+
+```javascript
+await viewerApi.setFOV(80);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/qBELdvy?editors=1011)
+
+## Screenshots
+
+### takeScreenshot()
+Returns the current canvas view as PNG image with transparent background. To get higher resolution of the screenshot, specify an optional Scale factor that will multiply the visible canvas pixel size (number). Optionally, you can specify exact coordinates and size in pixels as a scissor parameter array: x starting position, y starting position, width and height. In combination of both parameters, you need to manually apply custom scale to scissor parameter values.
+- Input: _Optional:_ Scale (number), _Optional:_ Scissor (array: [number, number, number, number])
+- Returns: Promise<void>
+
+```javascript
+//Return whole canvas
+const screenshot = await viewerApi.takeScreenshot();
+//Return whole canvas and double the actual pixel size
+const screenshot = await viewerApi.takeScreenshot(2);
+//Return region of the canvas (x, y, width, height)
+const screenshot = await viewerApi.takeScreenshot(1, [100, 100, 200, 200]);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/PooNNOd?editors=1011)
 
 ## Annotations
 
@@ -535,22 +536,6 @@ await viewerApi.enableAnnotations(true);
 
 > See the [live demo](https://codepen.io/vectary/pen/jONYKZy?editors=1011)
 
-### addAnnotation()
-Creates new annotation assigned to mesh by name. Annotation is placed to the center of object.
-- Input: [AnnotationConf](/types?id=annotationconf) (object)
-- Returns: Promise<[AnnotationType](/types?id=annotationtype) | null>
-
-```javascript
-const annotation = await viewerApi.addAnnotation({
-    label: "1",
-    name: "Handle",
-    text: "This is obviously very handy",
-    objectName: "Handle_-_baked"
-});
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/KKPZeem?editors=1011)
-
 ### getAnnotations()
 Returns array of all added annotations.
 - Input: None
@@ -558,7 +543,7 @@ Returns array of all added annotations.
 
 ```javascript
 const annotations = await viewerApi.getAnnotations();
-console.log("Annotations", annotations); 
+console.log("Annotations", annotations);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/OJLzEwM?editors=1011)
@@ -580,6 +565,22 @@ await viewerApi.getAnnotationById(annotation.id);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/XWrVYPq?editors=1011)
+
+### addAnnotation()
+Creates new annotation assigned to mesh by name. Annotation is placed to the center of object.
+- Input: [AnnotationConf](/types?id=annotationconf) (object)
+- Returns: Promise<[AnnotationType](/types?id=annotationtype) | null>
+
+```javascript
+const annotation = await viewerApi.addAnnotation({
+    label: "1",
+    name: "Handle",
+    text: "This is obviously very handy",
+    objectName: "Handle_-_baked"
+});
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/KKPZeem?editors=1011)
 
 ### removeAnnotationById()
 Removes single annotation by its unique id.
