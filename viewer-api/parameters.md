@@ -5,10 +5,10 @@ To control Viewer’s looks and behavior a set of initialization parameters is a
 Example: Setting viewer parameters using web component
 
 ```html
-<vctr-viewer 
-    model="d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c" 
-    autoplay="0" 
-    turntable="0.5" 
+<vctr-viewer
+    model="d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c"
+    autoplay="0"
+    turntable="0.5"
     enableApi="1"
 >
 </vctr-viewer>
@@ -17,10 +17,10 @@ Example: Setting viewer parameters using web component
 Example: Setting init parameters using iframe
 
 ```html
-<iframe 
-    src="https://www.vectary.com/embed/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&autoplay=0&turntable=0.5&enableApi=1" 
-    frameborder="0" 
-    width="100%" 
+<iframe
+    src="https://www.vectary.com/embed/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&autoplay=0&turntable=0.5&enableApi=1"
+    frameborder="0"
+    width="100%"
     height="480"
 >
 </iframe>
@@ -57,10 +57,10 @@ If set to 0, viewer will not show the hand icon with left-right-left rotation 3 
 If set to absolute URL of an image file, it will replace the default AR icon in top right corner. It works best with SVG or PNG with transparent background, up to 200x50px in size.
 
 ```html
-<iframe 
-    src="https://www.vectary.com/embed/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&arIcon=https://www.vectary.com/viewer/data/icons/noun_ar_2254890_ar_by_Sinistrad_from_the_Noun_Project.svg" 
-    frameborder="0" 
-    width="100%" 
+<iframe
+    src="https://www.vectary.com/embed/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&arIcon=https://www.vectary.com/viewer/data/icons/noun_ar_2254890_ar_by_Sinistrad_from_the_Noun_Project.svg"
+    frameborder="0"
+    width="100%"
     height="480"
 >
 </iframe>
@@ -72,10 +72,10 @@ If set to absolute URL of an image file, it will replace the default AR icon in 
 If set to absolute URL of a GLB or GLTF file, it will replace the embedded AR file with the specified one. This parameter can be set as "none", which will remove the AR icon for Android platform.
 
 ```html
-<iframe 
-    src="https://www.vectary.com/embed/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&arAndroid=vectary.com/viewer/data/examples/cube.glb&arApple=none" 
-    frameborder="0" 
-    width="100%" 
+<iframe
+    src="https://www.vectary.com/embed/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&arAndroid=vectary.com/viewer/data/examples/cube.glb&arApple=none"
+    frameborder="0"
+    width="100%"
     height="480"
 >
 </iframe>
@@ -88,10 +88,10 @@ If set to absolute URL of an USDZ or REALITY file, it will replace the embedded 
 
 
 ```html
-<iframe 
-    src="https://www.vectary.com/embed/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&arApple=https://www.vectary.com/viewer/data/examples/cube.reality&arAndroid=none" 
-    frameborder="0" 
-    width="100%" 
+<iframe
+    src="https://www.vectary.com/embed/viewer/v1/?model=d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c&arApple=https://www.vectary.com/viewer/data/examples/cube.reality&arAndroid=none"
+    frameborder="0"
+    width="100%"
     height="480"
 >
 </iframe>
@@ -104,12 +104,12 @@ If not set to 0, it will automatically rotate the scene. The value represents sp
 
 > See the [live demo](https://codepen.io/vectary/pen/LYPeJaQ?editors=1000)
 
-## gestureHandling (string, default: inferior) 
+## gestureHandling (string, default: inferior)
 Controls the scrolling behavior of Viewer. Allowed values:
 - `gestureHandling=“superior"` - scene can be zoomed by scrolling the mouse over the scene.
 - `gestureHandling=“inferior"` (default) - forces user to hold the Cmd (Mac) or Ctrl (PC) for zooming with mouse scroll. This option is useful when loading the viewer in fullscreen.
 
-## showGesturePrompts (num, default: 1) 
+## showGesturePrompts (num, default: 1)
 If set to 0, no prompts instructing users on how to control the scene (e.g. using Cmd+Scroll to zoom) will be shown.
 
 ## hideMeshes (num, default: 0)
@@ -151,27 +151,27 @@ Value represents the percentage of possible zooming out. 0 means no zoom out, in
 > See the [live demo](https://codepen.io/vectary/pen/VwZydNo?editors=1000)
 
 ## minAzimuth (num, default: -Infinity)
-Value represents the minimal angle to which the horizontal rotation is possible. Allowed values: -Infinity - 0. @Stefan please check
+Value represents the minimal angle to which the horizontal rotation is possible. Allowed values: -Infinity - 0.
 
 > See the [live demo](https://codepen.io/vectary/pen/OJLzwLR?editors=1000)
 
 ## maxAzimuth (num, default: Infinity)
-Value represents the maximum angle to which the horizontal rotation is possible. Allowed values: 0 - Infinity. @Stefan please check
+Value represents the maximum angle to which the horizontal rotation is possible. Allowed values: 0 - Infinity.
 
 > See the [live demo](https://codepen.io/vectary/pen/OJLzwLR?editors=1000)
 
-## minPolar (num, default: 0) 
-Value represents the minimal angle to which the vertical rotation is possible. Allowed values: -360 - 0. @Stefan please check
+## minPolar (num, default: 0)
+Value represents the minimal angle to which the vertical rotation is possible. Allowed values: -360 - 0.
 
 > See the [live demo](https://codepen.io/vectary/pen/VwZyBww?editors=1000)
 
 ## maxPolar (num, default: 360)
-Value represents the maximum angle to which the vertical rotation is possible. Allowed values: 0 - 360. @Stefan please check
+Value represents the maximum angle to which the vertical rotation is possible. Allowed values: 0 - 360.
 
 > See the [live demo](https://codepen.io/vectary/pen/VwZyBww?editors=1000)
 
-## env (string, default: piazzasanmarco) 
-Environment map to be used in the scene. Environment map is not exported as part of the moel, if you want other than the default environment, it needs to be explicitly set. Preview of all available environment apps can be found in Vectary editor library, allowed parameter values are: 
+## env (string, default: piazzasanmarco)
+Environment map to be used in the scene. Environment map is not exported as part of the moel, if you want other than the default environment, it needs to be explicitly set. Preview of all available environment apps can be found in Vectary editor library, allowed parameter values are:
 - `autumncrossing`
 - `autumnground`
 - `cedarbridge`
@@ -213,7 +213,7 @@ Gamma factor value that is used for [gamma correcting](https://en.wikipedia.org/
 Gamma correct the baseColor of each material for the factor of 2.2
 
 ## tonemap (string, default: filmic)
-[Tonemap](https://en.wikipedia.org/wiki/Tone_mapping) setting. Allowed values: 
+[Tonemap](https://en.wikipedia.org/wiki/Tone_mapping) setting. Allowed values:
 - `linear`
 - `reinhard`
 - `uncharted2`
