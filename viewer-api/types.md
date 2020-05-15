@@ -80,3 +80,9 @@ Properties:
 - **name:** string
 - **text:** string
 - **objectName:** string
+
+### ViewState
+Properties:
+- **target:** number[]
+- **position:** number[]
+- **zoom:** number

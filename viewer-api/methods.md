@@ -1,10 +1,8 @@
 # Methods
 
-!> To be able to run the API methods, enableAPI parameter needs to be enabled `enableAPI=1`.
-
 **Using object names**
 
- Practically all API methods rely on object names. This makes it transparent and simple to work with, but it's good to make few things clear:
+Practically all API methods rely on object names. This makes it transparent and simple to work with, but it's good to make few things clear:
 - Object name represents the name defined in object list inside Vectary project, e.g. `Box 1` at the time time of generating the export in Vectary editor (Viewer tab). It's a good idea to organise your object list and to name them properly before generating the export for the Viewer.
 - When referring to object or objects by name, make sure you are respecting case-sensitivity and replacing spaces with underscores, e.g. `Box_1`.
 - Typically there are singular and plural API methods available, e.g. `getObjectByName` and `getObjectsByName`. The singular method will always return a single object, if there are multiple objects matching the name, only the first one will be returned. The plural method will always return an array of objects, if there are multiple objects matching the name, they will all be returned.
@@ -12,11 +10,14 @@
 
 **Async functions**
 
-For better performance and user experience, we recommend using `await` before calling API methods as you can see in examples provided for each method. More information on async JavaScript functions: https://developers.google.com/web/fundamentals/primers/async-functions
+For better performance and user experience, we recommend using `await` before calling API methods which return `Promises`. More information on async JavaScript functions: https://developers.google.com/web/fundamentals/primers/async-functions
 
-**Animations**
+**Tweening**
 
-Selected methods can be used in combination with `animate()` API helper. You can add animation to camera movements, change of materials etc. For more information see [API helpers](/helpers?id=animateduration-number-timing-function-draw-function-onfinish-function).
+Some methods can be used in combination with the `animate()` API helper. You can add tweening/animation to camera movements, change of materials etc. For more information see [API helpers](/helpers.md).
+
+You can also use external animation libraries like [GSAP](https://greensock.com/gsap/).
+
 
 ## General
 
@@ -31,27 +32,48 @@ await viewerApi.init();
 
 > See the [live demo](https://codepen.io/vectary/pen/KKPZBgo?editors=1011)
 
+### load()
+Loads the model if the [parameter](/parameters?id=autoload-num-default-1) `autoLoad` is set to 0.
+- Input: None
+- Returns: Promise<string>
+
+```javascript
+await viewerApi.load();
+```
+
 ## Objects
 
 ### getObjects()
 Returns array of all objects in the 3D scene. Available objects are Meshes, Groups, Cameras and Lights.
 - Input: None
-- Returns: Promise<[SceneObject](/types?id=sceneobject)[]>
+- Returns: [SceneObject](/types?id=sceneobject)[]
 
 ```javascript
-const allSceneObjects = await viewerApi.getObjects();
+const allSceneObjects = viewerApi.getObjects();
 console.log("Objects", allSceneObjects);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/gNRbrW?editors=1011)
 
+### getHitObjects()
+Returns array of objects that mouse is hovering over.
+- Input: None
+- Returns: [SceneObject](/types?id=sceneobject)[]
+
+```javascript
+const hitObjects = viewerApi.getHitObjects();
+console.log("Objects", hitObjects);
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/MWgrBKX?editors=1011)
+
 ### getObjectsByName()
 Returns array of objects by name.
 - Input: Object name (string)
-- Returns: Promise<[SceneObject](/types?id=sceneobject)[]>
+- Returns: [SceneObject](/types?id=sceneobject)[]
 
 ```javascript
-const myObjects = await viewerApi.getObjectsByName("Ring");
+const myObjects = viewerApi.getObjectsByName("Ring");
 console.log("Objects", myObjects);
 ```
 
@@ -60,10 +82,10 @@ console.log("Objects", myObjects);
 ### getObjectByName()
 Returns single object by name.
 - Input: Object name (string)
-- Returns: Promise<[SceneObject](/types?id=sceneobject)>
+- Returns: [SceneObject](/types?id=sceneobject)
 
 ```javascript
-const myObject = await viewerApi.getObjectByName("Satellite_Antenna");
+const myObject = viewerApi.getObjectByName("Satellite_Antenna");
 console.log("Object", myObject);
 ```
 
@@ -72,10 +94,10 @@ console.log("Object", myObject);
 ### getMeshes()
 Returns array of all mesh objects in the 3D scene.
 - Input: None
-- Returns: Promise<[Mesh](/types?id=mesh)[]>
+- Returns: [Mesh](/types?id=mesh)[]
 
 ```javascript
-const allSceneMeshes = await viewerApi.getMeshes();
+const allSceneMeshes = viewerApi.getMeshes();
 console.log("Meshes", allSceneMeshes);
 ```
 
@@ -84,10 +106,10 @@ console.log("Meshes", allSceneMeshes);
 ### getMeshesByName()
 Returns array of mesh objects by name.
 - Input: Mesh name (string)
-- Returns: Promise<[Mesh](/types?id=mesh)[]>
+- Returns: [Mesh](/types?id=mesh)[]
 
 ```javascript
-const myMeshes = await viewerApi.getMeshesByName("Ring");
+const myMeshes = viewerApi.getMeshesByName("Ring");
 console.log("Meshes", myMeshes);
 ```
 
@@ -96,34 +118,22 @@ console.log("Meshes", myMeshes);
 ### getMeshByName()
 Returns single mesh object by name.
 - Input: Mesh name (string)
-- Returns: Promise<[Mesh](/types?id=mesh)[]>
+- Returns: [Mesh](/types?id=mesh)
 
 ```javascript
-const myMesh = await viewerApi.getMeshByName("Satellite_Antenna");
+const myMesh = viewerApi.getMeshByName("Satellite_Antenna");
 console.log("Mesh", myMesh);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/JjPMjMd?editors=1011)
 
-### getHitObjects()
-Returns array of objects that mouse is hovering over.
-- Input: None
-- Returns: Promise<[SceneObject](/types?id=sceneobject)[]>
-
-```javascript
-const hitObjects = await viewerApi.getHitObjects();
-console.log("Objects", hitObjects);
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/MWgrBKX?editors=1011)
-
 ### getVisibility()
 Checks current visibility of the object by name.
 - Input: Object name (string)
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
-const isVisible = await viewerApi.getVisibility("Satellite_Antenna");
+const isVisible = viewerApi.getVisibility("Satellite_Antenna");
 console.log("Is it visible?", isVisible);
 ```
 
@@ -132,13 +142,13 @@ console.log("Is it visible?", isVisible);
 ### setVisibility()
 Changes visibility of the object by name.
 - Input: Object name (string), Visibility (boolean), Exclusivity (boolean)
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
 // Set Rocket group invisible
-await viewerApi.setVisibility("Rocket", false, false);
+viewerApi.setVisibility("Rocket", false, false);
 // Set Rocket group visible and all other meshes invisible
-await viewerApi.setVisibility("Rocket", true, true);
+viewerApi.setVisibility("Rocket", true, true);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/qBWpBYb?editors=1011)
@@ -146,10 +156,10 @@ await viewerApi.setVisibility("Rocket", true, true);
 ### getPosition()
 Get the actual position (x,y,z coordinates) of the mesh or group by name.
 - Input: Mesh/Group name (string)
-- Returns: Promise<[number, number, number]>
+- Returns: [number, number, number]
 
 ```javascript
-const ballPosition = await viewerApi.getPosition("Ball");
+const ballPosition = viewerApi.getPosition("Ball");
 console.log("Ball position", ballPosition);
 ```
 
@@ -158,10 +168,10 @@ console.log("Ball position", ballPosition);
 ### setPositionRelative()
 Moves the object or group specified by name, by defined values along the x, y, z axis. Position is changed relatively to its original position.
 - Input: Object name (string), Position (array: [number, number, number])
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
-await viewerApi.setPositionRelative("Ball", [0.1, 0.1, 0.0]);
+viewerApi.setPositionRelative("Ball", [0.1, 0.1, 0.0]);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/gOYXVbK?editors=1011)
@@ -169,10 +179,10 @@ await viewerApi.setPositionRelative("Ball", [0.1, 0.1, 0.0]);
 ### setPositionAbsolute()
 Moves the object or group specified by name, by defined values along the x, y, z axis. Position is changed to the specified position.
 - Input: Object/Group name (string), Position (array: [number, number, number])
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
-await viewerApi.setPositionAbsolute("Ball", [0.0, 1.0, 0.0]);
+viewerApi.setPositionAbsolute("Ball", [0.0, 1.0, 0.0]);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/rNBYXOO?editors=1011)
@@ -180,10 +190,10 @@ await viewerApi.setPositionAbsolute("Ball", [0.0, 1.0, 0.0]);
 ### getRotation()
 Get the actual orientation of the mesh or group by name.
 - Input: Mesh/Group name (string)
-- Returns: Promise<[number, number, number, string]>
+- Returns: [number, number, number, string]
 
 ```javascript
-const ballRotation = await viewerApi.getRotation("Ball");
+const ballRotation = viewerApi.getRotation("Ball");
 console.log("Ball rotation", ballRotation);
 ```
 
@@ -192,10 +202,10 @@ console.log("Ball rotation", ballRotation);
 ### setRotationRelative()
 Rotates the object or group specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters). Rotation is changed relatively to its original rotation.
 - Input: Object/Group name (string), Rotation (array: [number, number, number]), _Optional:_ Order (string)
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
-await viewerApi.setRotationRelative("Ball", [0, 0, 0]);
+viewerApi.setRotationRelative("Ball", [0, 0, 0]);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/MWgrgZV?editors=1011)
@@ -203,10 +213,10 @@ await viewerApi.setRotationRelative("Ball", [0, 0, 0]);
 ### setRotationAbsolute()
 Rotates the object or group specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters). Rotation is changed to the specified rotation.
 - Input: Object/Group name (string), Rotation (array: [number, number, number]), _Optional:_ Order (string)
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
-await viewerApi.setRotationAbsolute("Ball", [0, 20, 20]);
+viewerApi.setRotationAbsolute("Ball", [0, 20, 20]);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/zYOpOeM?editors=1011)
@@ -214,10 +224,10 @@ await viewerApi.setRotationAbsolute("Ball", [0, 20, 20]);
 ### getScale()
 Get the actual dimmensions of the mesh or group by name.
 - Input: Mesh/Group name (string)
-- Returns: Promise<[number, number, number]>
+- Returns: [number, number, number]
 
 ```javascript
-const ballSize = await viewerApi.getScale("Ball");
+const ballSize = viewerApi.getScale("Ball");
 console.log("Ball size", ballSize);
 ```
 
@@ -226,10 +236,10 @@ console.log("Ball size", ballSize);
 ### setScaleRelative()
 Scales the object or group specified by name, by values on the x, y, z axis.
 - Input: Object/Group name (string), Scale (array: [number, number, number])
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
-await viewerApi.setScaleRelative("Ball", [0.2, 0.2, 0.2]);
+viewerApi.setScaleRelative("Ball", [0.2, 0.2, 0.2]);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/aboEoMX?editors=1011)
@@ -237,10 +247,10 @@ await viewerApi.setScaleRelative("Ball", [0.2, 0.2, 0.2]);
 ### setScaleAbsolute()
 Scales the object or group specified by name, to values on the x, y, z axis.
 - Input: Object/Group name (string), Scale (array: [number, number, number])
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
-await viewerApi.setScaleAbsolute("Ball", [1, 2, 2]);
+viewerApi.setScaleAbsolute("Ball", [1, 2, 2]);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/NWKXKmg?editors=1011)
@@ -250,10 +260,10 @@ await viewerApi.setScaleAbsolute("Ball", [1, 2, 2]);
 ### getMaterials()
 Returns a list of all materials used in the 3D scene.
 - Input: None
-- Returns: Promise<[Material](/types?id=material)[]>
+- Returns: [Material](/types?id=material)[]
 
 ```javascript
-const allSceneMaterials = await viewerApi.getMaterials();
+const allSceneMaterials = viewerApi.getMaterials();
 console.log("Materials", allSceneMaterials);
 ```
 
@@ -262,10 +272,10 @@ console.log("Materials", allSceneMaterials);
 ### getMaterialsByName()
 Returns array of materials by name.
 - Input: Material name (string)
-- Returns: Promise<[Material](/types?id=material)[]>
+- Returns: [Material](/types?id=material)[]
 
 ```javascript
-const Material = await viewerApi.getMaterialsByName("Asteroid surface");
+const Material = viewerApi.getMaterialsByName("Asteroid surface");
 console.log("Material", Material);
 ```
 
@@ -274,10 +284,10 @@ console.log("Material", Material);
 ### getMaterialByName()
 Returns single material by name.
 - Input: Material name (string)
-- Returns: Promise<[Material](/types?id=material)>
+- Returns: [Material](/types?id=material)
 
 ```javascript
-const myMaterial = await viewerApi.getMaterialByName("Brown rock");
+const myMaterial = viewerApi.getMaterialByName("Brown rock");
 console.log("Material", myMaterial);
 ```
 
@@ -286,16 +296,16 @@ console.log("Material", myMaterial);
 ### getMaterialProperties()
 Returns properties of the given material.
 - Input: Material name (string)
-- Returns: Promise<[MaterialConfig](/types?id=materialconfig) >
+- Returns: [MaterialConfig](/types?id=materialconfig)
 
 ```javascript
-const myMaterialProps = await viewerApi.getMaterialProperties("Brown rock");
+const myMaterialProps = viewerApi.getMaterialProperties("Brown rock");
 console.log("Material properties: ", myMaterialProps);
 ```
 
 ### createMaterial()
-Creates new material. When creating material, you can pass as many material properties as needed. Otionally you can clone existing material by passing its name, this way material will be cloned and only the specified properties will be changed.
-- Input: [MaterialConfig](/types?id=materialconfig) (object), Material name (string)
+Creates new material. When creating material, you can pass as many material properties as needed. Optionally you can clone existing an material by passing its name, this way material will be cloned and only the specified properties will be changed.
+- Input: Material properties ([MaterialConfig](/types?id=materialconfig)), Material name (string?)
 - Returns: Promise<[Material](/types?id=material)>
 
 ```javascript
@@ -322,20 +332,9 @@ await viewerApi.createMaterial(newMaterial, "wood_1");
 
 > See the [live demo](https://codepen.io/vectary/pen/yLBpLqw?editors=1011)
 
-### setMaterial()
-Applies material to the object by name.
-- Input: Object name (string), Material name (string)
-- Returns: Promise<boolean>
-
-```javascript
-await viewerApi.setMaterial("sphere_2", "my_new_material");
-```
-
-> See the [live demo](https://codepen.io/vectary/pen/xxKpbwR?editors=1011)
-
 ### updateMaterial()
-Chamges existing material. Pass only those material properties that you wish to change.
-- Input: Material name (string), Material properties (object)
+Changes existing material. Pass only those material properties that you wish to change. If `withPrefetch` is set to `true` (`false` is the default), it will try to prefetch any textures in the material.
+- Input: Material name (string), Material properties ([MaterialConfig](/types?id=materialconfig)), withPrefetch (boolean?: false)
 - Returns: Promise<boolean>
 
 ```javascript
@@ -344,20 +343,32 @@ const updatedMaterial = {
   metalness: 0.5,
   roughness: 1.0
 }
-await viewerApi.createMaterial("wood_1", updatedMaterial);
+await viewerApi.updateMaterial("wood_1", updatedMaterial);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/ZEzvYBb?editors=1011)
+
+### setMaterial()
+Applies material to the object by name.
+- Input: Object name (string), Material name (string)
+- Returns: boolean
+
+```javascript
+viewerApi.setMaterial("sphere_2", "my_new_material");
+```
+
+> See the [live demo](https://codepen.io/vectary/pen/xxKpbwR?editors=1011)
+
 
 ## Environment
 
 ### getBackground()
 Returns scene background. Background is either path to an image or RGB color code.
 - Input: None
-- Returns: Promise<string | [number, number, number]>
+- Returns: string | [number, number, number]
 
 ```javascript
-const background = await viewerApi.getBackground();
+const background = viewerApi.getBackground();
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/oNvpgyq?editors=1011)
@@ -379,10 +390,10 @@ await viewerApi.setBackground('space.hdr');
 ### getExposure()
 Returns the current scene exposure level.
 - Input: None
-- Returns: Promise< number >
+- Returns: number
 
 ```javascript
-const exposure = await viewerApi.getExposure();
+const exposure = viewerApi.getExposure();
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/ExaObBq?editors=1011)
@@ -390,7 +401,7 @@ const exposure = await viewerApi.getExposure();
 ### setExposure()
 Sets the scene overall exposure level to specified value.
 - Input: number
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
 viewerApi.setExposure(1.9);
@@ -398,15 +409,15 @@ viewerApi.setExposure(1.9);
 
 > See the [live demo](https://codepen.io/vectary/pen/povQdMx?editors=1011)
 
-## Cameras
+## Cameras & Viewport
 
 ### getCameras()
 Returns array of all camera objects in the 3D scene.
 - Input: None
-- Returns: Promise<[Camera](/types?id=camera)[]>
+- Returns: [Camera](/types?id=camera)[]
 
 ```javascript
-const allSceneCameras = await viewerApi.getCameras();
+const allSceneCameras = viewerApi.getCameras();
 console.log("Cameras", allSceneCameras);
 ```
 
@@ -415,10 +426,10 @@ console.log("Cameras", allSceneCameras);
 ### getCamerasByName ()
 Returns array of camera objects by name.
 - Input: Object name (string)
-- Returns: Promise<[Camera](/types?id=camera)[]>
+- Returns: [Camera](/types?id=camera)[]
 
 ```javascript
-const myCameras = await viewerApi.getCamerasByName("Camera");
+const myCameras = viewerApi.getCamerasByName("Camera");
 console.log("Cameras", myCameras);
 ```
 
@@ -427,35 +438,40 @@ console.log("Cameras", myCameras);
 ### getCameraByName ()
 Returns single camera object by name.
 - Input: Object name (string)
-- Returns: Promise<[Camera](/types?id=camera)>
+- Returns: [Camera](/types?id=camera)
 
 ```javascript
-const myCamera = await viewerApi.getCameraByName("Camera");
+const myCamera = viewerApi.getCameraByName("Camera");
 console.log("Camera", myCamera);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/aboEzdm?editors=1011)
 
-## Viewport
-
 ### switchView ()
 Switch camera view.
+- Input: Camera name (string)
+- Returns: boolean
+
+```javascript
+viewerApi.switchView("front_camera");
+```
+
+### switchViewAsync ()
+Switch camera view and resolves the promise when it has finished transitioning.
 - Input: Camera name (string)
 - Returns: Promise<boolean>
 
 ```javascript
-await viewerApi.switchView("front_camera");
+await viewerApi.switchViewAsync("front_camera");
 ```
-
-> See the [live demo](https://codepen.io/vectary/pen/OJLzJMm?editors=1011)
 
 ### moveView ()
 Moves the current view by the specified distance on XYZ axis.
 - Input: Position (array: [number, number, number])
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
-await viewerApi.moveView([0.1, -0.1, 0.1]);
+viewerApi.moveView([0.1, -0.1, 0.1]);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/VwZywje?editors=1011)
@@ -463,10 +479,10 @@ await viewerApi.moveView([0.1, -0.1, 0.1]);
 ### rotateView ()
 Rotates the current view by specified angles on XY axis. Note that when rotating the view, its target is not preserved.
 - Input: Rotation (array: [number, number])
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
-await viewerApi.rotateView([30, 0]);
+viewerApi.rotateView([30, 0]);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/qBWpBqE?editors=1011)
@@ -474,10 +490,10 @@ await viewerApi.rotateView([30, 0]);
 ### zoomView ()
 Zooms current view by the specified zoom factor.
 - Input: Zoom level (number)
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
-await viewerApi.zoomView(2);
+viewerApi.zoomView(2);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/ZEzvEBV?editors=1011)
@@ -485,10 +501,10 @@ await viewerApi.zoomView(2);
 ### getFOV ()
 Returns current camera field of view angle.
 - Input: None
-- Returns: Promise< number >
+- Returns: number
 
 ```javascript
-const fov = await viewerApi.getFOV();
+const fov = viewerApi.getFOV();
 console.log("Field of view:", fov);
 ```
 
@@ -497,27 +513,46 @@ console.log("Field of view:", fov);
 ### setFOV ()
 Sets current camera field of view angle. The angle can be netween 1 - 170.
 - Input: number
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
-await viewerApi.setFOV(80);
+viewerApi.setFOV(80);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/qBELdvy?editors=1011)
+
+### getViewState()
+Captures the current view state.
+- Input: None
+- Returns: Promise<[ViewState](/types?id=viewstate)>
+
+```javascript
+const currentState = await viewerApi.getViewState();
+```
+
+### applyViewState()
+Sets the current view to a certain state.
+- Input: A view state ([ViewState](/types?id=viewstate))
+- Returns: boolean
+
+```javascript
+const currentState = viewerApi.getViewState();
+viewerApi.applyViewState(currentState);
+```
 
 ## Screenshots
 
 ### takeScreenshot()
 Returns the current canvas view as PNG image with transparent background. To get higher resolution of the screenshot, specify an optional Scale factor that will multiply the visible canvas pixel size (number). Optionally, you can specify exact coordinates and size in pixels as a scissor parameter array: x starting position, y starting position, width and height. In combination of both parameters, you need to manually apply custom scale to scissor parameter values.
 - Input: _Optional:_ Scale (number), _Optional:_ Scissor (array: [number, number, number, number])
-- Returns: Promise<void>
+- Returns: string
 
 ```javascript
-//Return whole canvas
+// Return whole canvas
 const screenshot = await viewerApi.takeScreenshot();
-//Return whole canvas and double the actual pixel size
+// Return whole canvas and double the actual pixel size
 const screenshot = await viewerApi.takeScreenshot(2);
-//Return region of the canvas (x, y, width, height)
+// Return region of the canvas (x, y, width, height)
 const screenshot = await viewerApi.takeScreenshot(1, [100, 100, 200, 200]);
 ```
 
@@ -528,10 +563,10 @@ const screenshot = await viewerApi.takeScreenshot(1, [100, 100, 200, 200]);
 ### enableAnnotations()
 Globally controls visibility of annotations.
 - Input: Visibility (boolean)
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
-await viewerApi.enableAnnotations(true);
+viewerApi.enableAnnotations(true);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/jONYKZy?editors=1011)
@@ -539,29 +574,29 @@ await viewerApi.enableAnnotations(true);
 ### getAnnotations()
 Returns array of all added annotations.
 - Input: None
-- Returns: Promise<[AnnotationType](/types?id=annotationtype)[]>
+- Returns: [AnnotationType](/types?id=annotationtype)[]
 
 ```javascript
-const annotations = await viewerApi.getAnnotations();
+const annotations = viewerApi.getAnnotations();
 console.log("Annotations", annotations);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/OJLzEwM?editors=1011)
 
 ### getAnnotationById()
-Returns single annotation by its unique id.
+Returns a single annotation by its unique id.
 - Input: Id (string)
-- Returns: Promise<[AnnotationType](/types?id=annotationtype)>
+- Returns: [AnnotationType](/types?id=annotationtype)
 
 ```javascript
-const annotation = await viewerApi.addAnnotation({
+const annotation = viewerApi.addAnnotation({
     label: "1",
     name: "Handle",
     text: "This is obviously very handy",
     objectName: "Handle_-_baked"
 });
 
-await viewerApi.getAnnotationById(annotation.id);
+viewerApi.getAnnotationById(annotation.id);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/XWrVYPq?editors=1011)
@@ -569,10 +604,10 @@ await viewerApi.getAnnotationById(annotation.id);
 ### addAnnotation()
 Creates new annotation assigned to mesh by name. Annotation is placed to the center of object.
 - Input: [AnnotationConf](/types?id=annotationconf) (object)
-- Returns: Promise<[AnnotationType](/types?id=annotationtype) | null>
+- Returns: [AnnotationType](/types?id=annotationtype) | null
 
 ```javascript
-const annotation = await viewerApi.addAnnotation({
+const annotation = viewerApi.addAnnotation({
     label: "1",
     name: "Handle",
     text: "This is obviously very handy",
@@ -585,17 +620,17 @@ const annotation = await viewerApi.addAnnotation({
 ### removeAnnotationById()
 Removes single annotation by its unique id.
 - Input: Id (string)
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
-const annotation = await viewerApi.addAnnotation({
+const annotation = viewerApi.addAnnotation({
     label: "1",
     name: "Handle",
     text: "This is obviously very handy",
     objectName: "Handle_-_baked"
 });
 
-await viewerApi.removeAnnotationById(annotation.id);
+viewerApi.removeAnnotationById(annotation.id);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/rNBpKqv?editors=1011)
@@ -603,18 +638,18 @@ await viewerApi.removeAnnotationById(annotation.id);
 ### expandAnnotationsById()
 Expands annotation's body by its unique id.
 - Input: Ids (array), Expanded (boolean), Exclusivity (boolean)
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
 // Collapse all annotations except specified
-const annotation = await viewerApi.addAnnotation({
+const annotation = viewerApi.addAnnotation({
     label: "1",
     name: "Handle",
     text: "This is obviously very handy",
     objectName: "Handle_-_baked"
 });
 
-await viewerApi.expandAnnotationsById(annotation.id, true, true);
+viewerApi.expandAnnotationsById(annotation.id, true, true);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/gOYoKZa?editors=1011)
@@ -622,12 +657,12 @@ await viewerApi.expandAnnotationsById(annotation.id, true, true);
 ## Highlighting
 
 ### highlightMeshesByName()
-Highlight mesh objects by name. Highligting creates material overlay with specified color (default: "#ffff00") and intensity (default: 1).
+Highlight mesh objects by name. Highligting creates material overlay with specified color (default: `#ffff00`) and intensity (default: 1).
 - Input: Mesh names (array), Color (string), Intensity (number), Exclusivity (boolean)
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
-await viewerApi.highlightMeshesByName(["sphere_1", "cube", "cobe_12"], "#fcba03", 0.8, false);
+viewerApi.highlightMeshesByName(["sphere_1", "cube", "cobe_12"], "#fcba03", 0.8, false);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/xxKpJbB?editors=1011)
@@ -635,10 +670,53 @@ await viewerApi.highlightMeshesByName(["sphere_1", "cube", "cobe_12"], "#fcba03"
 ### unhighlightMeshesByName()
 Removes highlight from meshes.
 - Input: None
-- Returns: Promise<boolean>
+- Returns: boolean
 
 ```javascript
-await viewerApi.unhighlightMeshesByName(["sphere_1", "cube", "cobe_12"]);
+viewerApi.unhighlightMeshesByName(["sphere_1", "cube", "cobe_12"]);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/WNedKQZ?editors=1011)
+
+## Animations
+`gltf` animations are currently WIP, if you would like to see specific functions to control them, please let us know.
+
+### play()
+Plays an animation without looping and stopping on the last frame. You can play animations in reverse by setting a negative time scale. You can even change the speed/direction while the animation is still playing, by triggering the function again with a different time scale (see the `tweening` section at the beginning of this page).
+- Input: Animation Index (number), Time Scale (number)
+- Returns: boolean
+
+```javascript
+let close = true;
+window.addEventListener("click", e => {
+    if (close) {
+        console.log("closing");
+        viewerApi.play(0, 1); // idxs start from 0
+    }
+    else {
+        console.log("opening");
+        viewerApi.play(0, -1); // -1 for reverse
+    }
+    close = !close;
+});
+```
+
+## AR Badge
+
+### setUUIDAr()
+Changes the `UUID` of the project that will be loaded if the AR badge is triggered.
+- Input: Model UUID (string)
+- Returns: boolean
+
+```javascript
+vctrApi.setUUIDAr("d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c");
+```
+
+### triggerARClick()
+Triggers the AR button emulating a click. This is specially usefull if you want to use and external button instead of the provided AR badge, or just as an additional one.
+- Input: None
+- Returns: boolean
+
+```javascript
+vctrApi.triggerARClick();
+```

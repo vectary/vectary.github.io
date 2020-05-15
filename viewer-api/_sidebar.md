@@ -8,6 +8,6 @@
 - API reference
 
  - [Parameters](parameters.md)
- - [Types](types.md)
  - [Methods](methods.md)
+ - [Types](types.md)
  - [Helpers](helpers.md)
