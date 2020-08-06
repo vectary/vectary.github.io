@@ -7,7 +7,7 @@
 
 - API reference
 
- - [Parameters](parameters.md)
- - [Methods](methods.md)
- - [Types](types.md)
- - [Helpers](helpers.md)
+ - [Parameters](../parameters.md)
+ - [Methods](../methods.md)
+ - [Types](../types.md)
+ - [Helpers](../helpers.md)

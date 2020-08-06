@@ -154,7 +154,7 @@ viewerApi.setVisibility("Rocket", true, true);
 > See the [live demo](https://codepen.io/vectary/pen/qBWpBYb?editors=1011)
 
 ### getPosition()
-Get the actual position (x,y,z coordinates) of the mesh or group by name.
+Get the actual position (x,y,z coordinates) of any object in scene (mesh, group, light or camera) by name.
 - Input: Mesh/Group name (string)
 - Returns: [number, number, number]
 
@@ -166,7 +166,7 @@ console.log("Ball position", ballPosition);
 > See the [live demo](https://codepen.io/vectary/pen/vYBWwxq?editors=1011)
 
 ### setPositionRelative()
-Moves the object or group specified by name, by defined values along the x, y, z axis. Position is changed relatively to its original position.
+Moves any object in scene (mesh, group, light or camera) specified by name, by defined values along the x, y, z axis. Position is changed relatively to its original position.
 - Input: Object name (string), Position (array: [number, number, number])
 - Returns: boolean
 
@@ -177,7 +177,7 @@ viewerApi.setPositionRelative("Ball", [0.1, 0.1, 0.0]);
 > See the [live demo](https://codepen.io/vectary/pen/gOYXVbK?editors=1011)
 
 ### setPositionAbsolute()
-Moves the object or group specified by name, by defined values along the x, y, z axis. Position is changed to the specified position.
+Moves any object in scene (mesh, group, light or camera) specified by name, by defined values along the x, y, z axis. Position is changed to the specified position.
 - Input: Object/Group name (string), Position (array: [number, number, number])
 - Returns: boolean
 
@@ -188,7 +188,7 @@ viewerApi.setPositionAbsolute("Ball", [0.0, 1.0, 0.0]);
 > See the [live demo](https://codepen.io/vectary/pen/rNBYXOO?editors=1011)
 
 ### getRotation()
-Get the actual orientation of the mesh or group by name.
+Get the actual orientation of any object in scene (mesh, group, light or camera) by name.
 - Input: Mesh/Group name (string)
 - Returns: [number, number, number, string]
 
@@ -200,7 +200,7 @@ console.log("Ball rotation", ballRotation);
 > See the [live demo](https://codepen.io/vectary/pen/GRKOaYo?editors=1011)
 
 ### setRotationRelative()
-Rotates the object or group specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters). Rotation is changed relatively to its original rotation.
+Rotates any object in scene (mesh, group, light or camera) specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters). Rotation is changed relatively to its original rotation.
 - Input: Object/Group name (string), Rotation (array: [number, number, number]), _Optional:_ Order (string)
 - Returns: boolean
 
@@ -211,7 +211,7 @@ viewerApi.setRotationRelative("Ball", [0, 0, 0]);
 > See the [live demo](https://codepen.io/vectary/pen/MWgrgZV?editors=1011)
 
 ### setRotationAbsolute()
-Rotates the object or group specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters). Rotation is changed to the specified rotation.
+Rotates any object in scene (mesh, group, light or camera) specified by name, by the defined angles on the x, y, z axis. Order of rotation execution can be defined as order parameter - default value is XYZ (must be all capital letters). Rotation is changed to the specified rotation.
 - Input: Object/Group name (string), Rotation (array: [number, number, number]), _Optional:_ Order (string)
 - Returns: boolean
 
@@ -254,6 +254,11 @@ viewerApi.setScaleAbsolute("Ball", [1, 2, 2]);
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/NWKXKmg?editors=1011)
+
+### get2DCoordinates()
+Returns screen pixel coordinates of object or group.
+ - Input: Object/Group name (string)
+ - Returns: [number, number]
 
 ## Materials
 
@@ -531,7 +536,7 @@ const currentState = await viewerApi.getViewState();
 ```
 
 ### applyViewState()
-Sets the current view to a certain state.
+Sets the current view to a certain state. 
 - Input: A view state ([ViewState](/types?id=viewstate))
 - Returns: boolean
 
@@ -658,7 +663,7 @@ viewerApi.expandAnnotationsById(annotation.id, true, true);
 
 ### highlightMeshesByName()
 Highlight mesh objects by name. Highligting creates material overlay with specified color (default: `#ffff00`) and intensity (default: 1).
-- Input: Mesh names (array), Color (string), Intensity (number), Exclusivity (boolean)
+- Input: String[] - mesh names, Color (string), Intensity (number), Exclusivity (boolean)
 - Returns: boolean
 
 ```javascript
@@ -669,7 +674,7 @@ viewerApi.highlightMeshesByName(["sphere_1", "cube", "cobe_12"], "#fcba03", 0.8,
 
 ### unhighlightMeshesByName()
 Removes highlight from meshes.
-- Input: None
+- Input: String[] - mesh names
 - Returns: boolean
 
 ```javascript

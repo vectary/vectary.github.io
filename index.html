@@ -18,7 +18,7 @@
     </section>
 
     <section class="content">
-        <h2><a href="./viewer-api">Vectary Viewer API</a></h2>
+        <h2><a href="./viewer-api" id="apiDocLink">Vectary Viewer API</a></h2>
         <p>Javascript API for publishing and presenting your Vectary models online. Aimed at web developers who seek to
             add interactive 3D elements to their projects. Viewer API lets you transform objects on the scene, control
             their visibility, add animations, change objects materials and much more.</p>
@@ -36,6 +36,12 @@
         </ul>
     </section>
 
+    <script>
+        var apiDocLink = document.getElementById("apiDocLink");
+        if (["localhost", "127.0.0.1"].includes(window.location.hostname)) {
+            apiDocLink.setAttribute("href", "./viewer-api/index.html");
+        }
+    </script>
 </body>
 
 </html>
