@@ -57,7 +57,7 @@ console.log("Objects", allSceneObjects);
 
 ### getHitObjects()
 Returns array of objects that mouse is hovering over.
-- Input: None
+- Input: _Optional:_ First hit only (boolean)
 - Returns: [SceneObject](/types?id=sceneobject)[]
 
 ```javascript
