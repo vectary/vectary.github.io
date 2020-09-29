@@ -52,6 +52,9 @@ To give you a better understanding here are some simpler demos with their code, 
 
 ## Changelog
 
+- Sept 29, 2020
+ - Updated video texture properties documentation
+
 - May 15, 2020
  - Updated documentation
  - Added new methods and parameters

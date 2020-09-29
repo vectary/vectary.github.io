@@ -40,6 +40,9 @@ Properties:
 - **visible:** boolean
 
 ### MaterialConfig
+
+Please note video related properties are supported by web component viewer only.
+
 Properties:
 - **name:** string
 - **color:** string
@@ -47,22 +50,22 @@ Properties:
 - **roughness:** number
 - **metalness:** number
 - **map:** string
-- **videoMap:** string
+- **videoMap:** string (web component only)
 - **alphaMap:** string
-- **alphaVideoMap:** string
+- **alphaVideoMap:** string (web component only)
 - **aoMap:** string
-- **aoVideoMap:** string
+- **aoVideoMap:** string (web component only)
 - **aoMapIntensity:** number
 - **emissive:** string
 - **emissiveMap:** string
-- **emissiveVideoMap:** string
+- **emissiveVideoMap:** string (web component only)
 - **emissiveIntensity:** number
 - **metalnessMap:** string
-- **metalnessVideoMap:** string
+- **metalnessVideoMap:** string (web component only)
 - **roughnessMap:** string
-- **roughnessVideoMap:** string
+- **roughnessVideoMap:** string (web component only)
 - **normalMap:** string
-- **normalVideoMap:** string
+- **normalVideoMap:** string (web component only)
 
 ### AnnotationType
 Properties:
