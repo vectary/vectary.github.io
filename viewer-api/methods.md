@@ -540,6 +540,24 @@ const currentState = viewerApi.getViewState();
 viewerApi.applyViewState(currentState);
 ```
 
+### didRenderLastFrame()
+Returns true if scene was rendered last frame, false otherwise. Rendering occurs with each movement of camera, animation and mouse move. Useful for per render updates.
+- Input: None
+- Returns: Promise\<boolean\>
+
+```javascript
+function onAnimationFrame(timestamp) {
+    vctrApi.didRenderLastFrame()
+        .then((didRender) => { 
+            if (didRender) {
+                performPerRenderAction();
+            }
+        });
+    window.requestAnimationFrame(onAnimationFrame);
+}
+window.requestAnimationFrame(onAnimationFrame);
+```
+
 ## Screenshots
 
 ### takeScreenshot()
