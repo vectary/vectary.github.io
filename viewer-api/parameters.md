@@ -104,7 +104,7 @@ If set to 0, any zooming of the scene is disabled.
 Value represents the percentage of possible zooming in. 0 means no zoom in, 100 means full zoom in. Note: this setting will be applied to all cameras on scene. Allowed values: 0 - 100.
 
 ### zoomOut (num, default: Infinity)
-Value represents the percentage of possible zooming out. 0 means no zoom out, infinity means no limit. Note: this setting will be applied to all cameras on scene. Allowed values: 0 - infinity.
+Value represents the value of possible zooming out. 0 means no zoom out, infinity means no limit. Note: this setting will be applied to all cameras on scene. Allowed values: 0 - infinity.
 
 > See the [live demo](https://codepen.io/vectary/pen/VwZydNo?editors=1000)
 
