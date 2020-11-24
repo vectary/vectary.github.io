@@ -73,7 +73,10 @@ If set to 0, no prompts instructing users on how to control the scene (e.g. usin
 Controls the scrolling behavior of Viewer. Allowed values:
 - `gestureHandling="superior"` - scene can be zoomed by scrolling the mouse over the scene.
 - `gestureHandling="inferior"` (default) - forces user to hold the Cmd (Mac) or Ctrl (PC) for zooming with mouse scroll. This option is useful when loading the viewer in fullscreen.
-- `gestureHandling="none"` - disables all gestures (`rotate`, `pan` & `zoom`) except those explicitly enabled.
+- `gestureHandling="none"` - disables all gestures (`rotate`, `pan`, `zoom` and `doubleClickToFocus`) except those explicitly enabled.
+
+### doubleClickToFocus (num, default: 1)
+If set to 0, disable double click/tap to zoom and focus on point.
 
 ### rotate (num, default: 1)
 If set to 0, disables rotation touch & click-drag controls.

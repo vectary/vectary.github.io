@@ -52,6 +52,9 @@ To give you a better understanding here are some simpler demos with their code, 
 
 ## Changelog
 
+- Nov 24, 2020
+ - Added description for double click/tap to focus gesture parameter
+
 - Sept 29, 2020
  - Updated video texture properties documentation
 
