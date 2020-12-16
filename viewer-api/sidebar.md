@@ -9,5 +9,7 @@
 
  - [Parameters](parameters.md)
  - [Methods](methods.md)
+ - [Event listeners](listeners.md)
  - [Types](types.md)
+ - [Enumerations](enumerations.md)
  - [Helpers](helpers.md)
