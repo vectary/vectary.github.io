@@ -183,7 +183,7 @@ Gamma factor value that is used for [gamma correcting](https://en.wikipedia.org/
 ### baseColorGammaCorrection (num, default: 0)
 If set to 1, gamma-corrects the baseColor of each material for the factor of 2.2
 
-## AR Badge
+## AR
 
 ### arIcon (string)
 If set to absolute URL of an image file, it will replace the default AR icon in top right corner. It works best with SVG or PNG with transparent background, up to 200x50px in size.
@@ -199,6 +199,10 @@ If set to absolute URL of an image file, it will replace the default AR icon in 
 ```
 
 > See the [live demo](https://codepen.io/vectary/pen/GRgReVV?editors=1000)
+
+
+### arAllowScaling (num, default: 1)
+If set to 0, user won't be able to change scale of scene in augmented reality.
 
 ### arX (num, default: 20)
 Number of pixels that the AR badge is absolutely positioned from the `right` edge of the viewer.

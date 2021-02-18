@@ -52,8 +52,11 @@ To give you a better understanding here are some simpler demos with their code, 
 
 ## Changelog
 
-- Dev 16, 2020
-- Added documentation for Event Listeners
+- Feb 2, 2021
+ - Added arAllowScaling parameter
+
+- Dec 16, 2020
+ - Added documentation for Event Listeners
 
 - Nov 24, 2020
  - Added description for double click/tap to focus gesture parameter
