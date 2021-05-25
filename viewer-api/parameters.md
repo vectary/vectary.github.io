@@ -210,7 +210,7 @@ Number of pixels that the AR badge is absolutely positioned from the `right` edg
 ### arY (num, default: 20)
 Number of pixels that the AR badge is absolutely positioned from the `top` edge of the viewer.
 
-### noAR (num, default: 0)
+### noAr (num, default: 0)
 If set to 1, the AR badge will not be shown.
 
 ### arAndroid (string)
