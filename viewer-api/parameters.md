@@ -186,7 +186,7 @@ If set to 1, gamma-corrects the baseColor of each material for the factor of 2.2
 ## AR
 
 ### arIcon (string)
-If set to absolute URL of an image file, it will replace the default AR icon in top right corner. It works best with SVG or PNG with transparent background, up to 200x50px in size.
+If set to absolute URL of an image file, it will replace the default AR icon in top right corner. It works best with SVG or PNG with transparent background, up to 50x50px in size.
 
 ```html
 <iframe
