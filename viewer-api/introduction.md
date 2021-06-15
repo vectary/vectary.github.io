@@ -46,38 +46,41 @@ To give you a better understanding here are some simpler demos with their code, 
 ?> It is our aim to offer as much retro-compatibility as possible, therefore our versioning system will always aim to stay with `v1`. Any other number will signify a change in the looks of the rendering output or a complete rework of parameters, methods and overall structure of the Viewer and the API.
 
 - Viewer:
- - v1: Version 1.0 - Stable
+  - v1: Version 1.0 - Stable
 - API:
- - v1: Version 1.0 - Stable
+  - v1: Version 1.0 - Stable
 
 ## Changelog
 
+- Jun 15, 2012
+  - Added lang parameter
+
 - Feb 2, 2021
- - Added arAllowScaling parameter
+  - Added arAllowScaling parameter
 
 - Dec 16, 2020
- - Added documentation for Event Listeners
+  - Added documentation for Event Listeners
 
 - Nov 24, 2020
- - Added description for double click/tap to focus gesture parameter
+  - Added description for double click/tap to focus gesture parameter
 
 - Sept 29, 2020
- - Updated video texture properties documentation
+  - Updated video texture properties documentation
 
 - May 15, 2020
- - Updated documentation
- - Added new methods and parameters
- - See all [changes](https://github.com/vectary/vectary.github.io/commits/master)
+  - Updated documentation
+  - Added new methods and parameters
+  - See all [changes](https://github.com/vectary/vectary.github.io/commits/master)
 
 - Dec 3, 2019
- - API v1: 1.0 Stable
- - New arIcon and showPlaceholder parameters
- - New takeScreenshot method
+  - API v1: 1.0 Stable
+  - New arIcon and showPlaceholder parameters
+  - New takeScreenshot method
 
 - Sept 6, 2019
- - API v1: 1.0 Beta
- - This version is stable, no breaking changes will be implemented in v1. Some API methods still need improving.
+  - API v1: 1.0 Beta
+  - This version is stable, no breaking changes will be implemented in v1. Some API methods still need improving.
 
 - July 1, 2019
- - API v1: 1.0 RC
- - Releasing the first version of the Viewer API. Things are still under development and your projects might break in the future.
+  - API v1: 1.0 RC
+  - Releasing the first version of the Viewer API. Things are still under development and your projects might break in the future.

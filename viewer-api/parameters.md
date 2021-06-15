@@ -247,3 +247,15 @@ If set to an absolute URL of an `USDZ` or `REALITY` file, it will replace the em
 If set to 1, it will append the current URL to the back of the QR generated link (Only seen in Desktop). Once a mobile phone device scans the code and proceeds to the AR experience, when exiting the AR session, it will be redirected to the said URL.
 
 !> Using this parameter with an `iframe` will cause the redirect to point to the URL of the iframe, instead of the web page which is embeded in.
+
+### lang (string, default: en)
+
+Sets the language used in the QR code modal contents. The supported values are:
+- `"auto"` Sets the language based on the user's language settings. Fallbacks to english.
+- `"en"` English
+- `"es"` Spanish
+- `"de"` German
+- `"fr"` French
+- `"it"` Italian
+- `"ru"` Russian
+
